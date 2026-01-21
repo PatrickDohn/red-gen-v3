@@ -11,9 +11,9 @@ export type DutyItem = {
       visible: boolean;
     };
     
-    type EducationData = {
+    export type EducationData = {
       school: string;
-      duration: number;
+      duration: string;
       about: string;
     };
     

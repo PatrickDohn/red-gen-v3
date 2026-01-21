@@ -375,9 +375,18 @@ const initialData: ResumeDocProps = {
   skills: [
     { skill: "NextJs", rating: 4 },
     { skill: "React", rating: 5 },
-    { skill: "JavaScript/TypeScript", rating: 6 },
+    { skill: "TypeScript", rating: 6 },
+    { skill: "JavaScript", rating: 6 },
     { skill: "Python", rating: 4 },
     { skill: "Git", rating: 3 },
+    { skill: "API Architecture", rating: 5 },
+    { skill: "Automated Testing", rating: 6 },
+    { skill: "Automation", rating: 4 },
+    { skill: "SQL", rating: 3 },
+    { skill: "Unit Testing", rating: 5 },
+    { skill: "Node.js", rating: 6 },
+    { skill: "Pandas", rating: 4 },
+    
   ],
   professionalSkills: [
     { skill: "Software Development", rating: 6 },
@@ -403,9 +412,10 @@ const initialData: ResumeDocProps = {
   education: [
     {
       school: "General Assembly",
-      duration: 2020,
+      duration: "2020",
       about:
         "Completed an intensive 600+ hour curriculum focused on modern web development technologies and best practices.",
+        
     },
   ],
   activeSection: null,

@@ -1,59 +1,81 @@
-'use client'
+"use client";
 // context/SidebarContext.tsx
-import React, { createContext, useState, useContext, useMemo } from 'react';
-import { SidebarData, SidebarContextType } from '../types/sidebar';
-import { ClipboardCheck } from 'lucide-react'; // Example Icon
+import React, { createContext, useState, useContext, useMemo } from "react";
+import { SidebarData, SidebarContextType, SidebarItem, TemplateChoice } from "../types/sidebar";
+import { ClipboardCheck, Map } from "lucide-react";
 
-// --- Sidebar Data Definition (Centralized & Typed) ---
-export const sidebarData: SidebarData = {
-  navMain: [
-    {
-      title: "Getting Started",
-      url: "#started",
-      // icon: Map, // Assuming Map is imported
-      items: [
-        { title: "Installation", url: "#installation" },
-        { title: "Project Structure", url: "#" },
-      ],
-    },
-    {
-      title: "Building Your Resume",
-      url: "#",
-      icon: ClipboardCheck, 
-      items: [
-        { title: "Heading", url: "heading" },
-        { title: "Experience", url: "/experience", isActive: true },
-        { title: "Education", url: "#" },
-        { title: "Skills", url: "#" },
-        { title: "Professional Skills", url: "#" },
-      ],
-    },
+const SidebarContext = createContext<SidebarContextType | undefined>(undefined);
+
+const templateMenuItems: Record<TemplateChoice, SidebarItem[]> = {
+  "one": [
+    { title: "Heading", url: "?heading" },
+    { title: "Experience", url: "/edit#experience", isActive: true },
+    { title: "Education", url: "/edit#education" },
+    { title: "Skills", url: "/edit#skills" },
+    { title: "Design & Font", url: "/edit#design" }
+  ],
+  "two": [
+    { title: "Heading", url: "?heading" },
+    { title: "Experience", url: "/edit#experience", isActive: true },
+    { title: "Skills", url: "/edit#skills" },
+    { title: "Education", url: "/edit#education" },
+    { title: "Design & Font", url: "/edit#design" },
+    { title: "Preview", url: "/edit#view" }
+  ],
+  "three": [
+    { title: "Professional Skills", url: "#" },
   ],
 };
 
 
-
-const SidebarContext = createContext<SidebarContextType | undefined>(undefined);
-
-// Helper to find the default active item
-export const getDefaultActiveItem = (): string | null=> {
-  return sidebarData.navMain
-    .flatMap(group => group.items || [])
-    .find(item => item.isActive)?.title || null;
-};
-
 // Provider Component
 export function SidebarProvider({ children }: { children: React.ReactNode }) {
   const [activeItemKey, setActiveItemKey] = useState<string | null>(null);
-  const [sectionHighlight, setSectionHighlight] = useState<boolean>(false)
+  const [sectionHighlight, setSectionHighlight] = useState<boolean>(false);
 
-  const contextValue = useMemo(() => ({
-    activeItemKey,
-    setActiveItemKey,
-    sectionHighlight,
-    setSectionHighlight,
-    data: sidebarData,
-  }), [activeItemKey, sectionHighlight]);
+  const [templateChoice, setTemplateChoice] = useState<TemplateChoice>("two");
+
+  const dynamicSidebarData: SidebarData = useMemo(() => {
+    return {
+      navMain: [
+        {
+          title: "Getting Started",
+          url: "/edit#started",
+          icon: Map, // Assuming Map is imported
+          items: [
+            {
+              title: "Template Selection",
+              url: "#",
+              items: [
+                { title: "One", url: "#folders" },
+                { title: "Two", url: "#files" },
+                { title: "Three", url: "#config" },
+              ],
+            },
+          ],
+        },
+        {
+          title: `Template ${templateChoice}`,
+          url: "#template",
+          icon: ClipboardCheck,
+          items: templateMenuItems[templateChoice],
+        },
+      ],
+    };
+  }, [templateChoice]);
+
+  const contextValue = useMemo(
+    () => ({
+      activeItemKey,
+      setActiveItemKey,
+      sectionHighlight,
+      setSectionHighlight,
+      templateChoice,
+      setTemplateChoice,
+      data: dynamicSidebarData,
+    }),
+    [activeItemKey, sectionHighlight, templateChoice, dynamicSidebarData]
+  );
 
   return (
     <SidebarContext.Provider value={contextValue}>
@@ -66,7 +88,7 @@ export function SidebarProvider({ children }: { children: React.ReactNode }) {
 export function useSidebar(): SidebarContextType {
   const context = useContext(SidebarContext);
   if (context === undefined) {
-    throw new Error('useSidebar must be used within a SidebarProvider');
+    throw new Error("useSidebar must be used within a SidebarProvider");
   }
   return context;
 }

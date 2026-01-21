@@ -7,6 +7,7 @@ import { HeadingEdit } from "./heading/HeadingEdit";
 import { HeadingStyleEdit } from "./heading/HeadingStyleEdit";
 import { SkillsEdit } from "./skills/SkillsEdit";
 import { SkillStyleEdit } from "./skills/SkillsStyleEdit";
+import { EducationEdit } from "./education/EducationEdit";
 
 
 interface ContentMapProps {
@@ -15,9 +16,7 @@ interface ContentMapProps {
 
 export function EditCard({ cardType }: ContentMapProps) {
 
-  const { activeItemKey } = useSidebar();
-  console.log(activeItemKey, "!!!")
-  if (!activeItemKey) return null;
+  
 
   switch (cardType) {
     case "heading":
@@ -67,5 +66,21 @@ export function EditCard({ cardType }: ContentMapProps) {
           </TabsContent>
         </Tabs>
       );
+
+    case "education": 
+      return (
+        <Tabs defaultValue="content" className="w-[400px]">
+          <TabsList>
+            <TabsTrigger value="content">Content</TabsTrigger>
+            <TabsTrigger value="style">Style</TabsTrigger>
+          </TabsList>
+          <TabsContent value="content">
+            <EducationEdit />
+          </TabsContent>
+          <TabsContent value="style">
+            <h3>Style</h3>
+          </TabsContent>
+        </Tabs>
+      )
   }
 }

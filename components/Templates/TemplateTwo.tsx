@@ -19,6 +19,10 @@ import { EditCard } from "../editBlocks/EditCard";
 import { SkillSection } from "../skillBlocks/SkillsSection";
 import { Education } from "../educationBlocks/Education";
 import { Card, CardContent } from "../ui/card";
+import { HeadingTwo } from "../headingBlocks/HeadingsTwo";
+import { ExperienceTwo } from "../experienceBlocks/ExperienceTwo";
+import { SkillSectionTwo } from "../skillBlocks/SkillsSectionTwo";
+import { EducationTwo } from "../educationBlocks/EducationTwo";
 const docStyle: Record<string, React.CSSProperties> = {
   appContainer: {
     backgroundColor: "#fff",
@@ -57,49 +61,50 @@ const docStyle: Record<string, React.CSSProperties> = {
   },
 };
 
-export default function Resume() {
+export const ResTemplateTwo = () => {
   const data = useResumeData();
   const dispatch = useResumeDispatch();
   const {
-    headingStyle,
+    headingStyleTwo,
     iconState,
+    experienceStyleTwo,
     sectionVisibilityState,
-    skillStyle,
+    skillStyleTwo,
     educationStyles,
   } = useStyles();
 
   const activeSection = data.activeSection;
-  console.log("ACtive", activeSection)
+  console.log(sectionVisibilityState, "!!!")
   return (
     <div className="flex flex-row justify-between ml-10 mr-10">
-       
       <div style={docStyle.appContainer}>
         <div style={docStyle.page}>
-          <Heading
-            globalVariant="web"
+          <HeadingTwo
+            globalVariant={"web"}
             data={data}
-            headingStyle={headingStyle}
+            headingStyle={headingStyleTwo}
             webEdit={dispatch}
-            icons={iconState["heading"]}
           />
           <div style={{ display: "flex", flexDirection: "row" }}>
-            <Experience
+            <ExperienceTwo
               globalVariant="web"
               data={data}
-              experienceStyle={experienceStyle}
+              experienceStyle={experienceStyleTwo}
               icons={iconState["experience"]}
             />
-            <SkillSection
+          </div>
+          <div style={{ display: "flex", flexDirection: "row" }}>
+          <SkillSectionTwo
               globalVariant="web"
               data={data}
               webEdit={dispatch}
-              skillStyles={skillStyle}
+              skillStyles={skillStyleTwo}
               visibility={sectionVisibilityState}
               icons={iconState["skills"]}
             />
           </div>
           <div style={{ display: "flex", flexDirection: "row" }}>
-            <Education
+            <EducationTwo
               globalVariant="web"
               data={data}
               educationStyles={educationStyles}
@@ -108,8 +113,6 @@ export default function Resume() {
           </div>
         </div>
       </div>
-      
-      {activeSection && <EditCard cardType={activeSection} />}
     </div>
   );
-}
+};

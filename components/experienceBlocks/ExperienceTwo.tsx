@@ -16,10 +16,10 @@ interface ExperienceProps {
   globalVariant: string;
   data: ResumeDocProps;
   experienceStyle: any;
-  icons: IconData[];
+  icons?: IconData[];
 }
 
-export const Experience = ({
+export const ExperienceTwo = ({
   globalVariant,
   data,
   experienceStyle,
@@ -31,13 +31,13 @@ export const Experience = ({
     <DynamicDiv
       variant={globalVariant}
       className={`
-                hover:bg-gray-100 cursor-pointer transition duration-150 rounded-md
-                ${
-                  activeSection === "experience"
-                    ? "ring-2 ring-blue-400 bg-gray-100"
-                    : ""
-                }
-              `}
+                  hover:bg-gray-100 cursor-pointer transition duration-150 rounded-md
+                  ${
+                    activeSection === "experience"
+                      ? "ring-2 ring-blue-400 bg-gray-100"
+                      : ""
+                  }
+                `}
       onClick={() =>
         dispatch?.({
           type: "SET_ACTIVE_SECTION",
@@ -47,13 +47,8 @@ export const Experience = ({
       style={experienceStyle.experienceSection}
     >
       <DynamicDiv variant={globalVariant} style={experienceStyle.heading}>
-        <DynamicIcon
-          icon={iconDictionary.experience[0]}
-          style={experienceStyle.iconText}
-          variant={globalVariant}
-        />
         <Typography variant={globalVariant} style={experienceStyle.title}>
-          Experience
+          EXPERIENCE
         </Typography>
       </DynamicDiv>
       {data.experience.map((job, index) => {
@@ -109,13 +104,19 @@ export const Experience = ({
                       style={experienceStyle.dutyRow}
                     >
                       <DynamicDiv variant={globalVariant}>
-                        <DynamicIcon
-                          icon={icons[0]}
-                          style={experienceStyle.bullet}
+                        <DynamicDiv
                           variant={globalVariant}
+                          style={{
+                            marginRight: 4,
+                            width: 3, // minWidth is often treated as width in react-pdf
+                            height: 3,
+                            backgroundColor: "#004F7A",
+                            borderRadius: 1.5, // Half of width/height for a perfect circle
+                            marginTop: 3, // Align with the first line of text
+                            flexShrink: 0, // Ensures the circle stays a circle // Prevents the dot from squishing if text is long
+                          }}
                         />
                       </DynamicDiv>
-
                       {/* Column 2: The Wrapping Text Content */}
                       <Typography
                         variant={globalVariant}
@@ -132,11 +133,18 @@ export const Experience = ({
                       variant={globalVariant}
                       style={experienceStyle.dutyText}
                     >
-                      <DynamicIcon
-                        icon={icons[0]}
-                        style={experienceStyle.bullet}
+                      <DynamicDiv
                         variant={globalVariant}
-                      />{" "}
+                        style={{
+                          marginRight: "5px",
+                          minWidth: "3px", // Width of the dot
+                          height: "3px", // Height must match width
+                          backgroundColor: "#004F7A",
+                          borderRadius: "50%", // Makes it perfectly round
+                          marginTop: "5px", // Centers it vertically with the first line of text
+                          flexShrink: 0, // Prevents the dot from squishing if text is long
+                        }}
+                      />
                       <Typography variant={globalVariant}>
                         {duty.content}
                       </Typography>

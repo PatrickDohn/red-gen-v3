@@ -18,6 +18,7 @@ import {
     faPhone,
     faStar,
     faCircleCheck,
+    faGraduationCap,
   } from "@fortawesome/free-solid-svg-icons";
   
   import { faCircle as CircleOutline } from "@fortawesome/free-regular-svg-icons";
@@ -189,6 +190,15 @@ import {
         family: "Font Awesome Regular",
         iconObject: faCheck
       },
+    ],
+    education: [
+      {
+        id: 1,
+        name: "graduation_cap",
+        code: "\u{f19d}",
+        family: "Font Awesome Solid",
+        iconObject: faGraduationCap
+      }
     ]
   };
   

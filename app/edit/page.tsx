@@ -1,17 +1,16 @@
-"use client";
+'use client'
 
-import { EditCard } from "@/components/editBlocks/EditCard";
-import  Resume  from "@/components/Templates/TemplateOne"
+
+import { ResumeSelector } from "@/components/ResumeSelector";
 
 function page() {
-  
+ 
   return (
     <div>
-      <h1>Edit page</h1>
-      
-      <Resume />
+      <ResumeSelector />
     </div>
   )
+  
 }
 
-export default page
+export default page;

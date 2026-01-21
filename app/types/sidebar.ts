@@ -7,6 +7,7 @@ export interface SidebarItem {
   title: string;
   url: string;
   isActive?: boolean;
+  items?: SidebarItem[]
 }
 
 // Type for a main navigation group (e.g., "Building Your Resume")
@@ -36,10 +37,14 @@ export type ComponentMapType = {
   [key: string]: React.FC<SectionProps> | (() => JSX.Element); 
 };
 
+export type TemplateChoice = "one" | "two" | "three"
+
 // Type for the Context state
 export interface SidebarContextType {
   activeItemKey: string | null;
   setActiveItemKey: React.Dispatch<React.SetStateAction<string | null>>;
+  templateChoice: TemplateChoice; 
+  setTemplateChoice: React.Dispatch<React.SetStateAction<TemplateChoice>>;
   sectionHighlight: boolean;
   setSectionHighlight: React.Dispatch<React.SetStateAction<boolean>>;
   data: SidebarData;

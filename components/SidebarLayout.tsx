@@ -1,7 +1,5 @@
-'use client'
+"use client";
 import * as React from "react";
-
-
 import {
   Sidebar,
   SidebarContent,
@@ -16,29 +14,49 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import {
-  AudioWaveform,
-  BookOpen,
-  Bot,
-  Command,
-  Frame,
-  GalleryVerticalEnd,
-  Map,
-  PieChart,
-  Settings2,
-  SquareTerminal,
-  ClipboardCheck,
-} from "lucide-react";
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import { ChevronRight, GalleryVerticalEnd } from "lucide-react";
 import { useSidebar } from "@/app/context/SidebarContext";
 import { useResumeDispatch } from "@/app/context/ResumeContext";
+import { SidebarItem, TemplateChoice } from "@/app/types/sidebar";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+import { Button } from "./ui/button";
+import { CustomSubItem } from "./sidebar/SidebarItem";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const { data, activeItemKey, setActiveItemKey } = useSidebar();
+  const { data, activeItemKey, setActiveItemKey, setTemplateChoice } =
+    useSidebar();
   const dispatch = useResumeDispatch();
+  const [designPopoverOpen, setDesignPopoverOpen] = React.useState(false);
+  const [pdfPreview, setPdfPreviewOpen] = React.useState(false);
+
   const handleItemClick = (title: string) => {
-    // Normalize to lowercase to match EditCard switch cases
-    const key = title.toLowerCase(); 
+    const key = title.toLowerCase();
+
+    if (key === "preview") {
+      setPdfPreviewOpen(true)
+      return
+    }
+
+    if (key === "design & font") {
+      setDesignPopoverOpen(true);
+      return; // Stop here if you don't want the EditCard to change
+    }
+
     setActiveItemKey(key);
+    dispatch?.({
+      type: "SET_ACTIVE_SECTION",
+      payload: key,
+    });
   };
+
+  const handleSetTemplateChoice = (title: string) => {
+    setTemplateChoice(title.toLowerCase() as TemplateChoice);
+  };
+
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
@@ -58,46 +76,80 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
+
       <SidebarContent>
         <SidebarGroup>
           <SidebarMenu>
-            {/* The map function implicitly types 'group' as SidebarGroup */}
             {data.navMain.map((group) => (
               <SidebarMenuItem key={group.title}>
                 <SidebarMenuButton asChild>
-                  {/* TypeScript infers the icon component type */}
                   <a href={group.url} className="font-medium">
                     {group.icon && <group.icon />}
                     <span>{group.title}</span>
                   </a>
                 </SidebarMenuButton>
+
                 {group.items?.length ? (
                   <SidebarMenuSub>
-                    {/* The map function implicitly types 'item' as SidebarItem */}
                     {group.items.map((item) => (
                       <SidebarMenuSubItem key={item.title}>
-                        <SidebarMenuSubButton
-                          // Type-safe comparison
-                          isActive={item.title === activeItemKey}
-                          onClick={() => {
-                            handleItemClick(item.title)
-                            dispatch?.({
-                              type: "SET_ACTIVE_SECTION",
-                              payload: item.title.toLowerCase(),
-                            })
-                          }}
-                          className={`block w-full text-left p-2 ${
-                            activeItemKey === item.title.toLowerCase() ? "bg-accent" : ""
-                          }`}
-                        >
-                          {item.title}
-                        </SidebarMenuSubButton>
+                        {/* CHECK: Does this item have nested sub-items? */}
+                        {item.items?.length ? (
+                          <Collapsible className="group/collapsible">
+                            <CollapsibleTrigger asChild>
+                              <SidebarMenuSubButton className="flex items-center justify-between">
+                                <span>{item.title}</span>
+                                <ChevronRight className="ml-auto h-4 w-4 transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                              </SidebarMenuSubButton>
+                            </CollapsibleTrigger>
+                            <CollapsibleContent>
+                              <SidebarMenuSub>
+                                {item.items.map((subItem) => {
+                                  return (
+                                    <SidebarMenuSubItem key={subItem.title}>
+                                      <SidebarMenuSubButton
+                                        isActive={
+                                          subItem.title.toLowerCase() ===
+                                          activeItemKey
+                                        }
+                                        onClick={() =>
+                                          handleSetTemplateChoice(subItem.title)
+                                        }
+                                        className={
+                                          activeItemKey ===
+                                          item.title.toLowerCase()
+                                            ? "bg-accent"
+                                            : ""
+                                        }
+                                      >
+                                        {subItem.title}
+                                      </SidebarMenuSubButton>
+                                    </SidebarMenuSubItem>
+                                  );
+                                })}
+                              </SidebarMenuSub>
+                            </CollapsibleContent>
+                          </Collapsible>
+                        ) : (
+                          /* Standard button if no children */
+                          <CustomSubItem
+                            item={item}
+                            activeItemKey={activeItemKey}
+                            handleItemClick={handleItemClick}
+                            designPopoverOpen={designPopoverOpen}
+                            pdfPreview={pdfPreview}
+                            pdfIsOpen={setPdfPreviewOpen}
+                            setDesignPopoverOpen={setDesignPopoverOpen}
+                          />
+                        )}
                       </SidebarMenuSubItem>
                     ))}
                   </SidebarMenuSub>
                 ) : null}
               </SidebarMenuItem>
+             
             ))}
+             
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>

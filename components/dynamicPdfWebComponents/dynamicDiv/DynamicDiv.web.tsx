@@ -2,7 +2,7 @@ import React from 'react';
 
 // The props structure for the web variant
 export type DynamicDivWebProps = React.ComponentPropsWithoutRef<"div"> & {
-    children: React.ReactNode;
+    children?: React.ReactNode;
     
 }
 

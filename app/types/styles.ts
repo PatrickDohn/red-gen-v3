@@ -24,9 +24,10 @@ import {
   faCircleCheck,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { experienceStyle } from "../styles/experienceStyles";
-import { skillStyle } from "../styles/skillStyles";
-import { headingStyle } from "../styles/headingStyles";
+import { experienceStyle, experienceStyleTwo } from "../styles/experienceStyles";
+import { skillStyle, skillStyleTwo } from "../styles/skillStyles";
+import { headingStyle, headingStyleTwo } from "../styles/headingStyles";
+import { educationStyles, educationStylesTwo } from "../styles/educationStyles";
 import { IconData } from "../data/iconMap";
 
 interface IconRecord {
@@ -139,6 +140,15 @@ const iconState: IconState = {
       iconObject: faChevronRight,
     },
   ],
+  education: [
+    {
+      id: 1,
+      name: "ChevRight",
+      family: "Font Awesome Solid",
+      code: "\u{f054}",
+      iconObject: faChevronRight,
+    },
+  ]
 };
 
 export interface SectionVisibilityState {
@@ -157,8 +167,13 @@ const sectionVisibilityState: SectionVisibilityState = {
 
 export const initialStyles = {
   experienceStyle,
+  experienceStyleTwo,
   skillStyle,
+  skillStyleTwo,
   headingStyle,
+  headingStyleTwo,
+  educationStyles,
+  educationStylesTwo,
   iconMap,
   iconState,
   sectionVisibilityState
