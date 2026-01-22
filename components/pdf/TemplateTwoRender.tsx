@@ -15,7 +15,7 @@ import { ResumeDocProps } from "@/app/types/resume-data";
 import { IconState, SectionVisibilityState } from "@/app/types/styles";
 import { headingStyleTwo } from "@/app/styles/pdf/pdfHeading";
 import { HeadingTwo } from "../headingBlocks/HeadingsTwo";
-import { styles } from "@/app/styles/pdf/pdfDocument";
+import { stylesTwo } from "@/app/styles/pdf/pdfDocument";
 import { ExperienceTwo } from "../experienceBlocks/ExperienceTwo";
 import { experienceStyleTwo } from "@/app/styles/pdf/pdfExperience";
 import { SkillSectionTwo } from "../skillBlocks/SkillsSectionTwo";
@@ -30,7 +30,8 @@ interface DocProps {
   visibility: SectionVisibilityState;
 }
 
-const ResumeDocument = ({ data, iconState, visibility }: DocProps) => {
+const TemplateTwoRender = ({ data, iconState, visibility }: DocProps) => {
+  
   return (
     <Document
       title="Patrick Dohn"
@@ -38,7 +39,7 @@ const ResumeDocument = ({ data, iconState, visibility }: DocProps) => {
       author="Patrick Dohn"
       producer="Res-Gen"
     >
-      <Page size="LETTER" style={styles.page}>
+      <Page size="LETTER" style={stylesTwo.page}>
         <HeadingTwo
           globalVariant={"pdf"}
           data={data}
@@ -64,4 +65,4 @@ const ResumeDocument = ({ data, iconState, visibility }: DocProps) => {
   );
 };
 
-export default ResumeDocument;
+export default TemplateTwoRender;

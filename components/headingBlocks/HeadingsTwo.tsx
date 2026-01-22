@@ -59,32 +59,38 @@ export const HeadingTwo = ({
             {data.title.value}
           </Typography>
         )}
-      <DynamicDiv variant={globalVariant} style={headingStyle.contactSection}>
-        {Object.entries(data.contact).map(([tag, item]) => {
-          return (
-            <DynamicDiv key={tag} variant={globalVariant} style={headingStyle.contactRow}>
-             <DynamicDiv
+        <DynamicDiv variant={globalVariant} style={headingStyle.contactSection}>
+          {Object.entries(data.contact).map(([tag, item]) => {
+            if (!item.visible) return null;
+
+            return (
+              <DynamicDiv
+                key={tag}
                 variant={globalVariant}
-                style={headingStyle.textContainer}
+                style={headingStyle.contactRow}
               >
-                <Typography
+                <DynamicDiv
                   variant={globalVariant}
-                  style={headingStyle.contactText}
+                  style={headingStyle.textContainer}
                 >
-                  {toTitleCase(tag)}
-                </Typography>
-                <DynamicLink
-                  variant={globalVariant}
-                  linkValue={item.value}
-                  style={headingStyle.link}
-                >
-                  {item.value}
-                </DynamicLink>
+                  <Typography
+                    variant={globalVariant}
+                    style={headingStyle.contactText}
+                  >
+                    {toTitleCase(tag)}
+                  </Typography>
+                  <DynamicLink
+                    variant={globalVariant}
+                    linkValue={item.value}
+                    style={headingStyle.link}
+                  >
+                    {item.value}
+                  </DynamicLink>
+                </DynamicDiv>
               </DynamicDiv>
-            </DynamicDiv>
-          );
-        })}
-      </DynamicDiv>
+            );
+          })}
+        </DynamicDiv>
       </DynamicDiv>
     </DynamicDiv>
   );

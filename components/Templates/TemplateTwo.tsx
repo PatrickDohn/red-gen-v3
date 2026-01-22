@@ -23,6 +23,7 @@ import { HeadingTwo } from "../headingBlocks/HeadingsTwo";
 import { ExperienceTwo } from "../experienceBlocks/ExperienceTwo";
 import { SkillSectionTwo } from "../skillBlocks/SkillsSectionTwo";
 import { EducationTwo } from "../educationBlocks/EducationTwo";
+import { educationStylesTwo } from "@/app/styles/educationStyles";
 const docStyle: Record<string, React.CSSProperties> = {
   appContainer: {
     backgroundColor: "#fff",
@@ -51,13 +52,16 @@ const docStyle: Record<string, React.CSSProperties> = {
     fontWeight: 400,
     color: "#212121",
 
-    // borders
-    borderTop: "10px solid #B0BEC5",
-    borderBottom: "10px solid #B0BEC5",
-    borderTopLeftRadius: "50px",
-    borderBottomRightRadius: "50px",
-
-    overflow: "hidden",
+    // --- SUBTLE GEOMETRIC TEXTURE ---
+    // backgroundColor: "#FFFFFF", // Keep base white for readability
+    // background: `
+    //   radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent), 
+    //   radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent) 40px 40px, 
+    //   linear-gradient(rgba(0, 0, 0, 0.10) 1px, transparent 1px) 0 -0.5px, 
+    //   linear-gradient(90deg, rgba(0, 0, 0, 0.10) 1px, #ffffff 1px) -0.5px 0
+    // `,
+    // backgroundSize: "80px 80px, 80px 80px, 40px 40px, 40px 40px",
+    // --- GEOMETRIC PATTERN END ---
   },
 };
 
@@ -74,9 +78,9 @@ export const ResTemplateTwo = () => {
   } = useStyles();
 
   const activeSection = data.activeSection;
-  console.log(sectionVisibilityState, "!!!")
+  console.log(sectionVisibilityState, "!!!");
   return (
-    <div className="flex flex-row justify-between ml-10 mr-10">
+    <div className="flex flex-row justify-between ml-10 mr-10 items-start">
       <div style={docStyle.appContainer}>
         <div style={docStyle.page}>
           <HeadingTwo
@@ -94,7 +98,7 @@ export const ResTemplateTwo = () => {
             />
           </div>
           <div style={{ display: "flex", flexDirection: "row" }}>
-          <SkillSectionTwo
+            <SkillSectionTwo
               globalVariant="web"
               data={data}
               webEdit={dispatch}
@@ -107,12 +111,18 @@ export const ResTemplateTwo = () => {
             <EducationTwo
               globalVariant="web"
               data={data}
-              educationStyles={educationStyles}
+              educationStyles={educationStylesTwo}
               icons={iconState["education"]}
             />
           </div>
         </div>
       </div>
+      {activeSection && (
+        /* 2. Wrap EditCard in a sticky div */
+        <div className="sticky">
+          <EditCard cardType={activeSection} />
+        </div>
+      )}
     </div>
   );
 };

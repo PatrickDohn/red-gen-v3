@@ -12,7 +12,8 @@ const templateMenuItems: Record<TemplateChoice, SidebarItem[]> = {
     { title: "Experience", url: "/edit#experience", isActive: true },
     { title: "Education", url: "/edit#education" },
     { title: "Skills", url: "/edit#skills" },
-    { title: "Design & Font", url: "/edit#design" }
+    { title: "Design & Font", url: "/edit#design" },
+    { title: "Preview", url: "/edit#view" }
   ],
   "two": [
     { title: "Heading", url: "?heading" },

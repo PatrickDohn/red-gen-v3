@@ -99,6 +99,7 @@ export const headingStyle: Record<string, React.CSSProperties> = {
       marginBottom: 10,
       marginTop: 0,
       // border: "2px solid red",
+    
     },
   
     headingName: {

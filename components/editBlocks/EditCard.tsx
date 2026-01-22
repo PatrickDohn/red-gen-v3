@@ -8,6 +8,7 @@ import { HeadingStyleEdit } from "./heading/HeadingStyleEdit";
 import { SkillsEdit } from "./skills/SkillsEdit";
 import { SkillStyleEdit } from "./skills/SkillsStyleEdit";
 import { EducationEdit } from "./education/EducationEdit";
+import { SkillListEdit } from "./skills/SkillListEdit";
 
 
 interface ContentMapProps {
@@ -16,7 +17,9 @@ interface ContentMapProps {
 
 export function EditCard({ cardType }: ContentMapProps) {
 
-  
+  const { templateChoice } = useSidebar()
+
+  console.log(templateChoice, "In edit")
 
   switch (cardType) {
     case "heading":
@@ -59,7 +62,7 @@ export function EditCard({ cardType }: ContentMapProps) {
             <TabsTrigger value="style">Style</TabsTrigger>
           </TabsList>
           <TabsContent value="content">
-            <SkillsEdit />
+            {templateChoice === "one" ? <SkillsEdit /> : <SkillListEdit /> }
           </TabsContent>
           <TabsContent value="style">
             <SkillStyleEdit />
