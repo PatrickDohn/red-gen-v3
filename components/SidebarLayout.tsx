@@ -38,11 +38,21 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
     if (key === "preview") {
       setPdfPreviewOpen(true)
+      setActiveItemKey(null)
+      dispatch?.({
+        type: "SET_ACTIVE_SECTION",
+        payload: null,
+      });
       return
     }
 
     if (key === "design & font") {
       setDesignPopoverOpen(true);
+      setActiveItemKey(null)
+      dispatch?.({
+        type: "SET_ACTIVE_SECTION",
+        payload: null,
+      });
       return; // Stop here if you don't want the EditCard to change
     }
 

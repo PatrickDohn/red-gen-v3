@@ -6,8 +6,10 @@ import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
 import { AppSidebar } from "@/components/SidebarLayout";
 import { ResumeProvider } from "../context/ResumeContext";
-import { StyleProvider } from "../context/StyleContext";
+
 import { BreadcrumbHeader } from "@/components/sidebar/SidebarHeader";
+import { StyleProvider } from "../context/test";
+import { WebFooter } from "@/components/Footer";
 
 export default function MainLayout({
   children,
@@ -28,6 +30,7 @@ export default function MainLayout({
             </SidebarProvider>
           </StateProvider>
         </StyleProvider>
+        {/* <WebFooter /> */}
       </ResumeProvider>
     </div>
   );

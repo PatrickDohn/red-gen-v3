@@ -1,7 +1,7 @@
 import { StyleSheet } from '@react-pdf/renderer';
 
 export const skillStyleTwo = StyleSheet.create({
-  skillSection: {
+  section: {
     width: "100%",
     // Web 10px -> PDF 7.5pt
     margin: 7.5,
@@ -11,7 +11,7 @@ export const skillStyleTwo = StyleSheet.create({
     paddingBottom: 0,
     marginBottom: 7.5,
   },
-  skillContainer: {
+  container: {
     marginBottom: 7.5,
     padding: 0,
   },
@@ -99,7 +99,7 @@ export const skillStyleTwo = StyleSheet.create({
 
 
 export const pdfSkillStyles = StyleSheet.create({
-  skillSection: {
+  section: {
     width: "40%",
     // Web 10px -> PDF 7.5pt
     margin: 7.5,
@@ -110,7 +110,7 @@ export const pdfSkillStyles = StyleSheet.create({
     marginBottom: 7.5,
   },
 
-  skillContainer: {
+  container: {
     marginBottom: 7.5,
     padding: 0,
   },

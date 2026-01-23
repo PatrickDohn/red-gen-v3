@@ -21,10 +21,11 @@ import {
 } from "react-hook-form";
 import { Skills } from "@/app/types/resume-data";
 import { useResumeData, useResumeDispatch } from "@/app/context/ResumeContext";
-import { useStyleDispatch, useStyles } from "@/app/context/StyleContext";
+
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Trash2 } from "lucide-react";
+import { useStyleDispatch, useStyles } from "@/app/context/test";
 
 type Inputs = {
   skills: Skills[];

@@ -22,10 +22,7 @@ import {
     SelectValue,
   } from "@/components/ui/select";
   import { useResumeData, useResumeDispatch } from "@/app/context/ResumeContext";
-  import {
-    useStyleDispatch,
-    useStyles,
-  } from "@/app/context/StyleContext";
+ 
   import { IconData, iconDictionary } from "@/app/data/iconMap";
   import {
     faCheck,
@@ -41,6 +38,7 @@ import {
   import { ResumeDocProps, Skills } from "@/app/types/resume-data";
   import { Switch } from "@/components/ui/switch";
   import { CustomAccordianItem } from "./SkillAccordianItem";
+import { useStyleDispatch, useStyles, useStyleState } from "@/app/context/test";
   
   interface SelectionType {
     name: string;
@@ -139,10 +137,10 @@ import {
       undefined
     );
     const data = useResumeData();
-    const { sectionVisibilityState } = useStyles();
+    const { activeTemplate, iconState, sectionVisibility } = useStyleState();
     const dispatch = useResumeDispatch();
     const dispatchStyle = useStyleDispatch();
-    console.log(sectionVisibilityState, "!!!!");
+    console.log(sectionVisibility, "!!!!");
     const {
       handleSubmit,
       control,
@@ -164,14 +162,14 @@ import {
       console.log(data);
     };
   
-    const handleIconChange = (value: string) => {
-      const icon = iconData.find((i) => i.code === value);
+    // const handleIconChange = (value: string) => {
+    //   const icon = iconData.find((i) => i.code === value);
   
-      if (icon) {
-        setSelectedIcon(icon);
-      }
-    };
-    console.log(sectionVisibilityState["programmingLanguages"].visibility);
+    //   if (icon) {
+    //     setSelectedIcon(icon);
+    //   }
+    // };
+    // console.log(sectionVisibilityState["programmingLanguages"].visibility);
   
     return (
       <div className="h-100 border-green-200 rounded-lg ">
@@ -190,7 +188,7 @@ import {
   
                       <CustomAccordianItem
                         sectionVisibility={
-                          sectionVisibilityState["programmingLanguages"]
+                          sectionVisibility["programmingLanguages"]
                             .visibility
                         }
                         control={control}
@@ -202,7 +200,7 @@ import {
   
                       <CustomAccordianItem
                         sectionVisibility={
-                          sectionVisibilityState["frameworksLibraries"].visibility
+                          sectionVisibility["frameworksLibraries"].visibility
                         }
                         control={control}
                         section={"frameworksLibraries"}
@@ -212,7 +210,7 @@ import {
                       <AccordionTrigger>Tools & Databases</AccordionTrigger>
                       <CustomAccordianItem
                         sectionVisibility={
-                          sectionVisibilityState["toolsDatabases"].visibility
+                          sectionVisibility["toolsDatabases"].visibility
                         }
                         control={control}
                         section={"toolsDatabases"}

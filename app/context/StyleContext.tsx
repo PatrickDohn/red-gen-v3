@@ -20,7 +20,7 @@ import {
 export type UpdateStyleAction =
   | {
       type: "UPDATE_STYLE";
-      section: keyof StyleState; // "experienceStyle" | "skillsStyle" | "headingStyle"                       // the key inside the style object
+      section: keyof StyleState; 
       data: {
         headerTitle: {
           fontSize: number;

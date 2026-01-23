@@ -27,10 +27,10 @@ import {
   
   import { Switch } from "@/components/ui/switch";
   import { Trash2 } from "lucide-react";
-  
-  import { useStyleDispatch } from "@/app/context/StyleContext";
+
   import { useResumeDispatch } from "@/app/context/ResumeContext";
   import { ResumeDocProps, Skills } from "@/app/types/resume-data";
+import { useStyleDispatch } from "@/app/context/test";
   
   type Inputs = {
     programmingLanguages: Skills[];
@@ -75,7 +75,6 @@ import {
             onCheckedChange={(checked) =>
               dispatchStyle?.({
                 type: "SET_VISIBILITY",
-                section: "sectionVisibilityState",
                 key: section,
                 data: checked,
               })

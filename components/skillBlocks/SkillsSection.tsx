@@ -25,7 +25,7 @@ export const SkillSection = ({
   visibility,
 }: SkillSection) => {
   const activeSection = data.activeSection;
-
+  console.log("vis in sec", visibility)
   return (
     <DynamicDiv
       variant={globalVariant}
@@ -37,7 +37,7 @@ export const SkillSection = ({
                     : ""
                 }
               `}
-      style={skillStyles.skillSection}
+      style={skillStyles.section}
       onClick={() => {
         if (webEdit) {
           webEdit({

@@ -1,7 +1,7 @@
 import { StyleSheet } from "@react-pdf/renderer";
 
 export const educationStyles = StyleSheet.create({
-  educationSection: {
+  section: {
     width: "100%",
     // Web 10px -> PDF 7.5pt
     margin: 7.5,
@@ -68,7 +68,7 @@ export const educationStyles = StyleSheet.create({
 
 
 export const educationStylesTwo = StyleSheet.create({
-  educationSection: {
+  section: {
     width: "100%",
     // Web 10px -> PDF 7.5pt
     margin: 7.5,

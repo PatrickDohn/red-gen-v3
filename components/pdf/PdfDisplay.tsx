@@ -4,10 +4,11 @@
 import dynamic from "next/dynamic";
 
 import { registerFonts } from "@/lib/registerFonts";
-import { useStyles } from "@/app/context/StyleContext";
+
 import { useResumeData } from "@/app/context/ResumeContext";
 import { useSidebar } from "@/app/context/SidebarContext";
 import { TemplateSelection } from "./TemplateSelection";
+import { useStyles } from "@/app/context/test";
 
 // Import your ResumeDocument component (which uses <Text>) normally
 
@@ -26,7 +27,7 @@ export default function PdfDisplay() {
   const { templateChoice } = useSidebar();
 
   console.log(templateChoice, "Display");
-  const { iconState, sectionVisibilityState } = useStyles();
+  const { iconState, sectionVisibility } = useStyles();
 
   return (
     <PDFViewer
@@ -41,7 +42,7 @@ export default function PdfDisplay() {
       <TemplateSelection
         data={data}
         templateChoice={templateChoice}
-        visibility={sectionVisibilityState}
+        visibility={sectionVisibility}
         icon={iconState}
       />
     </PDFViewer>

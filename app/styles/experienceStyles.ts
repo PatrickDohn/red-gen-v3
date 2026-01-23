@@ -110,7 +110,7 @@ export const experienceStyleTwo: Record<string, React.CSSProperties> = {
     fontFamily: "JetBrains Mono",
     fontWeight: 800,
     lineHeight: 1.5,
-    color: "#004F7A",
+    color: "#212121",
     textAlign: "center",
   },
   experienceContainer: {

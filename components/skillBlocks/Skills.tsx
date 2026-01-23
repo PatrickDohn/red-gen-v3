@@ -29,7 +29,7 @@ export const Skills = ({
   visibility,
 }: SkillProps) => {
   return (
-    <DynamicDiv variant={globalVariant} style={skillStyle.skillContainer}>
+    <DynamicDiv variant={globalVariant} style={skillStyle.container}>
       <DynamicDiv variant={globalVariant} style={skillStyle.heading}>
         <DynamicIcon
           variant={globalVariant}

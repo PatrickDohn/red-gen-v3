@@ -1,7 +1,7 @@
 import { StyleSheet } from "@react-pdf/renderer";
 
 export const experienceStyleTwo = StyleSheet.create({
-  experienceSection: {
+  section: {
     width: "100%",
     // Web 10px -> PDF 7.5pt
     margin: 7.5,
@@ -21,11 +21,13 @@ export const experienceStyleTwo = StyleSheet.create({
     borderBottomStyle: "solid",
   },
   iconText: {
-    fontSize: 11.25, // 15 * 0.75
-    marginBottom: 3, // 4 * 0.75
-    marginRight: 3.75,
-    width: 11.25,
-    color: "#004F7A",
+    marginRight: 4,
+    width: 3, // minWidth is often treated as width in react-pdf
+    height: 3,
+    backgroundColor: "#004F7A",
+    borderRadius: 1.5, // Half of width/height for a perfect circle
+    marginTop: 3, // Align with the first line of text
+    flexShrink: 0, // Ensures the circle stays a circle // Prevents the dot from squishing if text is long
   },
   title: {
     fontSize: 12.075, // 16.1 * 0.75
@@ -62,24 +64,25 @@ export const experienceStyleTwo = StyleSheet.create({
     // Spacing between bullet points
     marginTop: 2,
     paddingLeft: 4.5, // 15 * 0.75
-    paddingRight: 4.5
+    paddingRight: 4.5,
   },
   dutyText: {
     flex: 1,
     fontSize: 7.5,
   },
   bullet: {
-    fontSize: 6,
-    marginTop: 5, // Manual adjustment to center bullet with first line of text
     marginRight: 4,
-    width: 6,
-    color: "#004F7A",
+    width: 3, // minWidth is often treated as width in react-pdf
+    height: 3,
+    backgroundColor: "#004F7A",
+    borderRadius: 1.5, // Half of width/height for a perfect circle
+    marginTop: 3, // Align with the first line of text
+    flexShrink: 0, // Ensures the circle stays a circle // Prevents the dot from squishing if text is long
   },
 });
 
-
 export const pdfExperienceStyles = StyleSheet.create({
-  experienceSection: {
+  section: {
     width: "60%",
     // Web 10px -> PDF 7.5pt
     margin: 7.5,

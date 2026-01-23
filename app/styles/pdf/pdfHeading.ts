@@ -1,13 +1,13 @@
 import { StyleSheet } from "@react-pdf/renderer";
 
 export const headingStyleTwo = StyleSheet.create({
-  headingSection: {
+  section: {
     flexDirection: "row",
     width: "100%",
     marginBottom: 7.5,
   },
 
-  headingName: {
+  name: {
     flexDirection: "column",
     width: "100%",
     margin: 10,
@@ -18,7 +18,7 @@ export const headingStyleTwo = StyleSheet.create({
     marginBottom: 0,
   },
 
-  headerTitle: {
+  title: {
     fontSize: 34, // -1 or -2 px to visually match PDF size
     fontFamily: "JetBrains Mono",
     fontWeight: 700, // PDF "700" ≈ web "800"
@@ -28,7 +28,7 @@ export const headingStyleTwo = StyleSheet.create({
     letterSpacing: "-0.2px", // Use numbers, not strings for spacing in PDF
   },
 
-  headerSubTitle: {
+  subTitle: {
     fontSize: 10, // visually aligns with PDF medium size
     fontFamily: "JetBrains Mono",
     fontWeight: 100,
@@ -83,14 +83,14 @@ export const headingStyleTwo = StyleSheet.create({
 });
 
 export const headingStyle = StyleSheet.create({
-  headingSection: {
+  section: {
     flexDirection: "row",
     width: "100%",
     marginBottom: 7.5,
     marginTop: 0,
   },
 
-  headingName: {
+  name: {
     flexDirection: "column",
     width: "60%",
     margin: 7.5,
@@ -101,7 +101,7 @@ export const headingStyle = StyleSheet.create({
     marginBottom: 0,
   },
 
-  headerTitle: {
+  title: {
     fontSize: 34, // -1 or -2 px to visually match PDF size
     fontFamily: "JetBrains Mono",
     fontWeight: 700, // PDF "700" ≈ web "800"
@@ -111,7 +111,7 @@ export const headingStyle = StyleSheet.create({
     letterSpacing: "-0.2px", // Use numbers, not strings for spacing in PDF
   },
 
-  headerSubTitle: {
+  subTitle: {
     fontSize: 7.5, // visually aligns with PDF medium size
     fontFamily: "JetBrains Mono",
     fontWeight: 100,
@@ -134,7 +134,7 @@ export const headingStyle = StyleSheet.create({
   contactRow: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 5,
+    marginBottom: 3.25,
   },
 
   textContainer: {
@@ -162,7 +162,7 @@ export const headingStyle = StyleSheet.create({
 
   contactText: {
     fontSize: 8,
-    marginBottom: 10,
+    marginBottom: 7.5,
     lineHeight: 1.1,
   },
 

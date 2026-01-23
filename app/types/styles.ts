@@ -84,7 +84,7 @@ export interface IconState {
   [key: string]: IconData[];
 }
 
-const iconState: IconState = {
+export const iconState: IconState = {
   heading: [
     {
       id: 1,
@@ -155,7 +155,7 @@ export interface SectionVisibilityState {
   [key: string]: {visibility: boolean}
 }
 
-const sectionVisibilityState: SectionVisibilityState = {
+export const sectionVisibilityState: SectionVisibilityState = {
   heading: {visibility: true},
   experience: {visibility: true},
   skills: {visibility: false},

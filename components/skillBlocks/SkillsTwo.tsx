@@ -28,7 +28,7 @@ export const SkillsTwo = ({
   visibility,
 }: SkillProps) => {
   return (
-    <DynamicDiv variant={globalVariant} style={skillStyle.skillContainer}>
+    <DynamicDiv variant={globalVariant} style={skillStyle.container}>
       <DynamicDiv variant={globalVariant} style={skillStyle.heading}>
         <Typography variant={globalVariant} style={skillStyle.title}>
           {title.toUpperCase()} 

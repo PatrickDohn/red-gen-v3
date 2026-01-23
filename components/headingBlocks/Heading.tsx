@@ -1,8 +1,6 @@
 "use client";
 
-import {
-  ResumeAction,
-} from "@/app/context/ResumeContext";
+import { ResumeAction } from "@/app/context/ResumeContext";
 import { toTitleCase } from "@/lib/utils";
 import { IconData } from "@/app/data/iconMap";
 import { Typography } from "../dynamicPdfWebComponents/typography/Typography";
@@ -17,7 +15,7 @@ interface HeadingProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   headingStyle: any;
   webEdit?: React.Dispatch<ResumeAction> | null;
-  icons: IconData[]
+  icons: IconData[];
 }
 
 export const Heading = ({
@@ -25,7 +23,7 @@ export const Heading = ({
   data,
   headingStyle,
   webEdit,
-  icons
+  icons,
 }: HeadingProps) => {
   const activeSection = data.activeSection;
   return (
@@ -48,17 +46,17 @@ export const Heading = ({
           });
         }
       }}
-      style={headingStyle.headingSection}
+      style={headingStyle.section}
     >
-      <DynamicDiv variant={globalVariant} style={headingStyle.headingName}>
+      <DynamicDiv variant={globalVariant} style={headingStyle.name}>
         {/* <h1 style={headingStyle.headerTitle}>{data.name}</h1> */}
-        <Typography variant={globalVariant} style={headingStyle.headerTitle}>
+        <Typography variant={globalVariant} style={headingStyle.title}>
           {data.name}
         </Typography>
         {!data.title.visible ? null : (
           <Typography
             variant={globalVariant}
-            style={headingStyle.headerSubTitle}
+            style={headingStyle.subTitle}
           >
             {data.title.value}
           </Typography>
@@ -66,11 +64,7 @@ export const Heading = ({
       </DynamicDiv>
       <DynamicDiv variant={globalVariant} style={headingStyle.contactSection}>
         {Object.entries(data.contact).map(([tag, item]) => {
-     
-          const icon = icons.find(
-            (i) => i.name == toTitleCase(tag)
-          );
-          
+          const icon = icons.find((i) => i.name == toTitleCase(tag));
 
           if (!item.visible) return null;
 

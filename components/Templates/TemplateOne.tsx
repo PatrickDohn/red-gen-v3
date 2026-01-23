@@ -12,13 +12,15 @@ import {
   useResumeData,
   useResumeDispatch,
 } from "../../app/context/ResumeContext";
-import { useStyles } from "../../app/context/StyleContext";
+
 import { Experience } from "../experienceBlocks/Experience";
 import { experienceStyle } from "@/app/styles/experienceStyles";
 import { EditCard } from "../editBlocks/EditCard";
 import { SkillSection } from "../skillBlocks/SkillsSection";
 import { Education } from "../educationBlocks/Education";
 import { Card, CardContent } from "../ui/card";
+import { useStyles, useStyleState } from "@/app/context/test";
+import { TemplateWrapper } from "./TemplateWrapper";
 const docStyle: Record<string, React.CSSProperties> = {
   appContainer: {
     backgroundColor: "#fff",
@@ -58,58 +60,50 @@ const docStyle: Record<string, React.CSSProperties> = {
 };
 
 export default function Resume() {
+  
   const data = useResumeData();
   const dispatch = useResumeDispatch();
-  const {
-    headingStyle,
-    iconState,
-    sectionVisibilityState,
-    skillStyle,
-    educationStyles,
-  } = useStyles();
+  const styles = useStyles();
+
+  const { heading, experience, skills, education } = styles;
+
+  const { activeTemplate, iconState, sectionVisibility } = useStyleState();
 
   const activeSection = data.activeSection;
-  console.log("ACtive", activeSection)
+  console.log("ACtive", activeSection);
   return (
-    <div className="flex flex-row justify-between ml-10 mr-10">
-       
-      <div style={docStyle.appContainer}>
-        <div style={docStyle.page}>
-          <Heading
-            globalVariant="web"
-            data={data}
-            headingStyle={headingStyle}
-            webEdit={dispatch}
-            icons={iconState["heading"]}
-          />
-          <div style={{ display: "flex", flexDirection: "row" }}>
-            <Experience
-              globalVariant="web"
-              data={data}
-              experienceStyle={experienceStyle}
-              icons={iconState["experience"]}
-            />
-            <SkillSection
-              globalVariant="web"
-              data={data}
-              webEdit={dispatch}
-              skillStyles={skillStyle}
-              visibility={sectionVisibilityState}
-              icons={iconState["skills"]}
-            />
-          </div>
-          <div style={{ display: "flex", flexDirection: "row" }}>
-            <Education
-              globalVariant="web"
-              data={data}
-              educationStyles={educationStyles}
-              icons={iconState["education"]}
-            />
-          </div>
-        </div>
+    <TemplateWrapper>
+      <Heading
+        globalVariant="web"
+        data={data}
+        headingStyle={heading}
+        webEdit={dispatch}
+        icons={iconState["heading"]}
+      />
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        <Experience
+          globalVariant="web"
+          data={data}
+          experienceStyle={experience}
+          icons={iconState["experience"]}
+        />
+        <SkillSection
+          globalVariant="web"
+          data={data}
+          webEdit={dispatch}
+          skillStyles={skills}
+          visibility={sectionVisibility}
+          icons={iconState["skills"]}
+        />
       </div>
-      
-      {activeSection && <EditCard cardType={activeSection} />}
-    </div>
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        <Education
+          globalVariant="web"
+          data={data}
+          educationStyles={education}
+          icons={iconState["education"]}
+        />
+      </div>
+    </TemplateWrapper>
   );
 }

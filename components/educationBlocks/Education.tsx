@@ -26,7 +26,7 @@ export const Education = ({
   return (
     <DynamicDiv
       variant={globalVariant}
-      style={educationStyles.educationSection}
+      style={educationStyles.section}
       className={`
         hover:bg-gray-100 cursor-pointer transition duration-150 rounded-md
         ${
@@ -49,7 +49,7 @@ export const Education = ({
           variant={globalVariant}
         />
         <Typography variant={globalVariant} style={educationStyles.title}>
-          EDUCATION
+          Education
         </Typography>
       </DynamicDiv>
       {data.education.map((item, index) => (

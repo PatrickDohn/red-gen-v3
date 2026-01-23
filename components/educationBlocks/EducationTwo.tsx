@@ -26,7 +26,7 @@ export const EducationTwo = ({
   return (
     <DynamicDiv
       variant={globalVariant}
-      style={educationStyles.educationSection}
+      style={educationStyles.section}
       className={`
         hover:bg-gray-100 cursor-pointer transition duration-150 rounded-md
         ${
@@ -51,7 +51,7 @@ export const EducationTwo = ({
         <DynamicDiv
           key={index}
           variant={globalVariant}
-          style={educationStyles.educationContainer}
+          style={educationStyles.container}
         >
           <DynamicDiv variant={globalVariant} style={educationStyles.titleRow}>
             <Typography

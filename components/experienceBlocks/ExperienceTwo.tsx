@@ -1,16 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import {
-  useResumeData,
   useResumeDispatch,
 } from "../../app/context/ResumeContext";
-import { faCircle as CircleOutline } from "@fortawesome/free-regular-svg-icons";
 import { Typography } from "../dynamicPdfWebComponents/typography/Typography";
 import { DynamicDiv } from "../dynamicPdfWebComponents/dynamicDiv/DynamicDiv";
 import { ResumeDocProps } from "@/app/types/resume-data";
-import { DynamicIcon } from "../dynamicPdfWebComponents/dynamicIcon/DynamicIcon";
 
-import { IconData, iconDictionary } from "@/app/data/iconMap";
+
+import { IconData } from "@/app/data/iconMap";
 
 interface ExperienceProps {
   globalVariant: string;
@@ -23,7 +21,6 @@ export const ExperienceTwo = ({
   globalVariant,
   data,
   experienceStyle,
-  icons,
 }: ExperienceProps) => {
   const dispatch = useResumeDispatch();
   const activeSection = data.activeSection;
@@ -44,7 +41,7 @@ export const ExperienceTwo = ({
           payload: "experience",
         })
       }
-      style={experienceStyle.experienceSection}
+      style={experienceStyle.section}
     >
       <DynamicDiv variant={globalVariant} style={experienceStyle.heading}>
         <Typography variant={globalVariant} style={experienceStyle.title}>
@@ -106,15 +103,7 @@ export const ExperienceTwo = ({
                       <DynamicDiv variant={globalVariant}>
                         <DynamicDiv
                           variant={globalVariant}
-                          style={{
-                            marginRight: 4,
-                            width: 3, // minWidth is often treated as width in react-pdf
-                            height: 3,
-                            backgroundColor: "#004F7A",
-                            borderRadius: 1.5, // Half of width/height for a perfect circle
-                            marginTop: 3, // Align with the first line of text
-                            flexShrink: 0, // Ensures the circle stays a circle // Prevents the dot from squishing if text is long
-                          }}
+                          style={experienceStyle.iconText}
                         />
                       </DynamicDiv>
                       {/* Column 2: The Wrapping Text Content */}
@@ -135,15 +124,7 @@ export const ExperienceTwo = ({
                     >
                       <DynamicDiv
                         variant={globalVariant}
-                        style={{
-                          marginRight: "5px",
-                          minWidth: "3px", // Width of the dot
-                          height: "3px", // Height must match width
-                          backgroundColor: "#004F7A",
-                          borderRadius: "50%", // Makes it perfectly round
-                          marginTop: "5px", // Centers it vertically with the first line of text
-                          flexShrink: 0, // Prevents the dot from squishing if text is long
-                        }}
+                        style={experienceStyle.iconText}
                       />
                       <Typography variant={globalVariant}>
                         {duty.content}

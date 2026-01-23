@@ -32,9 +32,9 @@ export function EditCard({ cardType }: ContentMapProps) {
           <TabsContent value="content">
             <HeadingEdit />
           </TabsContent>
-          <TabsContent value="style">
+          {/* <TabsContent value="style">
             <HeadingStyleEdit />
-          </TabsContent>
+          </TabsContent> */}
         </Tabs>
       );
 
@@ -48,9 +48,9 @@ export function EditCard({ cardType }: ContentMapProps) {
           <TabsContent value="content">
             <ExperienceEdit />
           </TabsContent>
-          <TabsContent value="style">
+          {/* <TabsContent value="style">
             <ExperienceStyleEdit />
-          </TabsContent>
+          </TabsContent> */}
         </Tabs>
       );
 
@@ -64,9 +64,9 @@ export function EditCard({ cardType }: ContentMapProps) {
           <TabsContent value="content">
             {templateChoice === "one" ? <SkillsEdit /> : <SkillListEdit /> }
           </TabsContent>
-          <TabsContent value="style">
+          {/* <TabsContent value="style">
             <SkillStyleEdit />
-          </TabsContent>
+          </TabsContent> */}
         </Tabs>
       );
 
@@ -80,9 +80,9 @@ export function EditCard({ cardType }: ContentMapProps) {
           <TabsContent value="content">
             <EducationEdit />
           </TabsContent>
-          <TabsContent value="style">
+          {/* <TabsContent value="style">
             <h3>Style</h3>
-          </TabsContent>
+          </TabsContent> */}
         </Tabs>
       )
   }

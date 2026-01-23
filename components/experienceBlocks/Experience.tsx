@@ -44,7 +44,7 @@ export const Experience = ({
           payload: "experience",
         })
       }
-      style={experienceStyle.experienceSection}
+      style={experienceStyle.section}
     >
       <DynamicDiv variant={globalVariant} style={experienceStyle.heading}>
         <DynamicIcon

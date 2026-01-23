@@ -44,17 +44,17 @@ export const HeadingTwo = ({
           });
         }
       }}
-      style={headingStyle.headingSection}
+      style={headingStyle.section}
     >
-      <DynamicDiv variant={globalVariant} style={headingStyle.headingName}>
+      <DynamicDiv variant={globalVariant} style={headingStyle.name}>
         {/* <h1 style={headingStyle.headerTitle}>{data.name}</h1> */}
-        <Typography variant={globalVariant} style={headingStyle.headerTitle}>
+        <Typography variant={globalVariant} style={headingStyle.title}>
           {data.name}
         </Typography>
         {!data.title.visible ? null : (
           <Typography
             variant={globalVariant}
-            style={headingStyle.headerSubTitle}
+            style={headingStyle.subTitle}
           >
             {data.title.value}
           </Typography>

@@ -37,7 +37,7 @@ export const SkillSectionTwo = ({
                     : ""
                 }
               `}
-      style={skillStyles.skillSection}
+      style={skillStyles.section}
       onClick={() => {
         if (webEdit) {
           webEdit({
