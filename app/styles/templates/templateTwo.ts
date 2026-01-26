@@ -9,26 +9,26 @@ export const getTemplateTwoStyles = (theme: ThemeConfig ) => {
         section: {
             display: "flex",
             flexDirection: "row",
-            width: "100%",
-            marginBottom: 10,
+            // width: "100%",
+            
+            marginLeft:10,
+            marginRight: 10,
             marginTop: 0,
+            marginBottom: 10,
+            // Specific paddings
+            paddingLeft: 10,
+            paddingRight: 10,
+            paddingTop: 0,
+            paddingBottom: 0,
             // border: "2px solid red",
           },
           name: {
             display: "flex",
             flexDirection: "column",
             width: "100%",
+            
         
 
-            marginLeft:10,
-            marginRight: 10,
-            marginTop: 0,
-            marginBottom: 0,
-            // Specific paddings
-            paddingLeft: 10,
-            paddingRight: 10,
-            paddingTop: 0,
-            paddingBottom: 0,
             // border: "2px solid red"
           },
           title: {
@@ -39,7 +39,7 @@ export const getTemplateTwoStyles = (theme: ThemeConfig ) => {
             marginBottom: 6, // slightly larger to match PDF spacing
             textAlign: "start",
             letterSpacing: "-0.2px", // PDF tends to render tighter kerning
-            color: theme.secondaryColor
+            color: theme.primaryColor
           }, 
           subTitle: {
             fontSize: theme.fontSizeSubName, // visually aligns with PDF medium size
@@ -309,6 +309,7 @@ export const getTemplateTwoStyles = (theme: ThemeConfig ) => {
             paddingRight: 10,
             paddingTop: 0,
             paddingBottom: 0,
+            // border: "2px solid red"
           },
         
           heading: {

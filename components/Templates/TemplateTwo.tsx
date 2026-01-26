@@ -16,14 +16,7 @@ import { useStyles, useStyleState } from "@/app/context/test";
 export const ResTemplateTwo = () => {
   const data = useResumeData();
   const dispatch = useResumeDispatch();
-  // const {
-  //   headingStyleTwo,
-  //   iconState,
-  //   experienceStyleTwo,
-  //   sectionVisibilityState,
-  //   skillStyleTwo,
-  //   educationStylesTwo,
-  // } = useStyles();
+
   const styles = useStyles();
 
   const { 

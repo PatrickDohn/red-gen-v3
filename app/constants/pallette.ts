@@ -23,7 +23,7 @@ export const RESUME_PALETTES = [
     {
       name: "Modern Technologist",
       primary: "#059669",
-      secondary: "#A7F3D0",        // Noticeable Mint/Emerald
+      secondary: "#10B981",        // Noticeable Mint/Emerald
       text: "#1E293B",
       bg: "#F8FAFC",
       accent: "#059669",
@@ -50,12 +50,22 @@ export const RESUME_PALETTES = [
     {
       name: "Elegant Visionary",     // NEW PURPLE PALETTE
       primary: "#7C3AED",          // Vivid Royal Purple
-      secondary: "#DDD6FE",        // Soft Lavender (visible but subtle)
+      secondary: "#A78BFA",        // Soft Lavender (visible but subtle)
       text: "#1F1635",             // Very dark purple-grey text
       bg: "#FFFFFF",
       accent: "#7C3AED",
       secondaryAccent: "#A78BFA"   // Bold Purple line
     },
+    {
+      name: "Option1",
+      primary: "#004F7A",
+      secondary: "#64748B",
+      text: "#212121",
+      bg: "#B0BEC5",
+      accent: "#B0BEC5",
+      secondaryAccent: ""
+
+    }
 
   ];
 

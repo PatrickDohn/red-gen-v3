@@ -22,12 +22,15 @@ export interface ThemeConfig {
   secondaryColor: string;
   borderColor: string;
   textColor: string;
+  iconColor: string;
+
   fontFamily: string;
   fontSizeContent: number;
   fontSizeTitle: number;
   fontSizeName: number;
   fontSizeContactText: number;
   fontSizeSubName: number;
+  documentPadding: number;
 }
 
 interface StyleState {
@@ -46,6 +49,10 @@ type StyleAction =
       type: "SET_VISIBILITY";
       key: string; // The section name: "experience", "education", etc.
       data: boolean;
+    }
+  | {
+      type: "SET_PAGE_MARGIN";
+      payload: Partial<ThemeConfig>;
     };
 
 const initialTheme: ThemeConfig = {
@@ -53,12 +60,14 @@ const initialTheme: ThemeConfig = {
   secondaryColor: "#64748B",
   borderColor: "#B0BEC5",
   textColor: "#212121",
+  iconColor: "#004F7A",
   fontFamily: "Inter",
   fontSizeContent: 10,
   fontSizeTitle: 16.1,
   fontSizeName: 36,
   fontSizeSubName: 12,
   fontSizeContactText: 8,
+  documentPadding: 10
 };
 
 const initialState: StyleState = {
@@ -80,21 +89,38 @@ function styleReducer(state: StyleState, action: StyleAction): StyleState {
         ...state,
         theme: {
           ...state.theme,
-          ...action.payload, 
+          ...action.payload,
         },
       };
 
     case "SET_VISIBILITY": {
-      const { key, data } = action; 
+      const { key, data } = action;
 
       return {
         ...state,
         sectionVisibility: {
           ...state.sectionVisibility,
-          [key]: { visibility: data }, 
+          [key]: { visibility: data },
         },
       };
     }
+
+    case "SET_PAGE_MARGIN": {
+      const { documentPadding } = action.payload;
+
+  
+
+      if (documentPadding === undefined) return state;
+
+      return {
+        ...state,
+        theme: {
+          ...state.theme,
+          documentPadding: documentPadding,
+        },
+      };
+    }
+
     default:
       return state;
   }
@@ -111,7 +137,6 @@ const StyleDispatchContext = createContext<React.Dispatch<StyleAction> | null>(
 export function StyleProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(styleReducer, initialState);
 
-
   const computedStyles = useMemo(() => {
     const factory =
       templateRegistry[state.activeTemplate as keyof typeof templateRegistry] ||
@@ -122,7 +147,12 @@ export function StyleProvider({ children }: { children: ReactNode }) {
       iconState: state.iconState,
       sectionVisibility: state.sectionVisibility,
     };
-  }, [state.activeTemplate, state.theme, state.iconState, state.sectionVisibility]);
+  }, [
+    state.activeTemplate,
+    state.theme,
+    state.iconState,
+    state.sectionVisibility,
+  ]);
 
   return (
     <StyleStateContext.Provider value={state}>

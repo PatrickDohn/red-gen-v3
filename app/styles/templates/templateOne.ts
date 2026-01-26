@@ -44,7 +44,7 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
         fontWeight: 300, // PDF 'light' looks heavier than browser
         lineHeight: 1.15,
         marginBottom: 3,
-        color: "#9FA6AC", // slightly darker to match PDF rendering
+        color: theme.secondaryColor, // slightly darker to match PDF rendering
         textAlign: "start",
         letterSpacing: "-0.1px",
       },
@@ -76,7 +76,8 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
 
       textContainer: {
         flexDirection: "column",
-        borderBottom: "1px solid #B0BEC5",
+        borderBottom: "1px solid",
+        borderColor: theme.borderColor,
         marginLeft: 10,
         // border: "2px solid blue",
       },
@@ -86,7 +87,7 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
         marginBottom: 5, // Spaces the icon from the text
         marginRight: 5,
         width: 15,
-        color: "#004F7A",
+        color: theme.iconColor,
         // border: "2px solid blue"
       },
 
@@ -94,7 +95,7 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
         fontSize: 10, // +1px to compensate for PDF thickness
         marginBottom: 2,
         textDecoration: "none",
-        color: "#004F7A",
+        color: theme.primaryColor,
         lineHeight: 1.1,
       },
 
@@ -124,7 +125,7 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
         display: "flex",
         flexDirection: "row",
         borderBottom: "2px solid",
-        borderColor: "#B0BEC5",
+        borderColor: theme.borderColor,
         marginBottom: 5,
       },
       iconText: {
@@ -134,7 +135,7 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
         marginRight: 5,
 
         width: 15, // Give it an explicit width for clean alignment
-        color: "#004F7A",
+        color: theme.iconColor,
       },
       title: {
         fontSize: 16.1,
@@ -154,12 +155,12 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
       positionTitleText: {
         fontSize: 10,
         fontWeight: 700,
-        color: "#212121",
+        color: theme.textColor,
       },
       positionCompanyAccent: {
         fontSize: 10,
         fontWeight: 700,
-        color: "#004F7A", // Your accent color
+        color: theme.primaryColor, // Your accent color
       },
 
       text: {
@@ -182,7 +183,7 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
         marginTop: 5,
         marginRight: 4,
         width: 6,
-        color: "#004F7A",
+        color: theme.primaryColor,
       },
     },
     skills: {
@@ -211,7 +212,7 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
         flexDirection: "row",
         borderBottom: "2px solid",
         // alignItems: "center",
-        borderColor: "#B0BEC5",
+        borderColor: theme.borderColor,
         marginBottom: 5,
         // border: "2px solid red",
       },
@@ -222,7 +223,7 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
         paddingTop: 2.8,
         marginRight: 5,
         width: 15, // Give it an explicit width for clean alignment
-        color: "#004F7A",
+        color: theme.iconColor,
       },
       title: {
         fontSize: 16.1,
@@ -266,7 +267,7 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
 
       skillText: {
         fontSize: 10,
-        color: "#212121",
+        color: theme.textColor,
         width: "50%",
         marginTop: 5,
         paddingLeft: 0,
@@ -285,6 +286,7 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
         fontSize: 6, // Sets the icon size
         // Spaces the icon from the text
         width: 6,
+        color: theme.iconColor,
       },
     },
     education: {
@@ -307,7 +309,7 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
         display: "flex",
         flexDirection: "row",
         borderBottom: "2px solid",
-        borderColor: "#B0BEC5",
+        borderColor: theme.borderColor,
         marginBottom: 5,
       },
       iconText: {
@@ -316,7 +318,7 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
         paddingTop: 2.8, // Spaces the icon from the text
         marginRight: 5,
         width: 15, // Give it an explicit width for clean alignment
-        color: "#004F7A",
+        color: theme.iconColor,
       },
 
       title: {
@@ -337,7 +339,7 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
       schoolTitleText: {
         fontSize: 10,
         fontWeight: 700,
-        color: "#212121",
+        color: theme.textColor,
       },
 
       text: {
@@ -362,7 +364,7 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
         marginTop: 5,
         marginRight: 4,
         width: 6,
-        color: "#004F7A",
+        color: theme.primaryColor,
       },
     },
   };

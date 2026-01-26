@@ -1,6 +1,7 @@
 import { useResumeData } from "@/app/context/ResumeContext";
 import { EditCard } from "../editBlocks/EditCard";
 import { useSidebar } from "@/app/context/SidebarContext";
+import { useStyleState } from "@/app/context/test";
 
 const docStyle: Record<string, React.CSSProperties> = {
   appContainer: {
@@ -50,6 +51,7 @@ export const TemplateWrapper = ({
 }>) => {
   const data = useResumeData();
   const { templateChoice } = useSidebar();
+  const { theme } = useStyleState(); 
 
   const activeSection = data.activeSection;
   return (
@@ -60,17 +62,15 @@ export const TemplateWrapper = ({
           style={
             templateChoice === "one"
               ? {
-                  minHeight: "100vh",
+                  // minHeight: "100vh",
                   height: "100%",
                   width: "100%",
                   display: "flex",
                   flexDirection: "column",
                   backgroundColor: "#FFFFFF",
-                  padding: 16,
-                  paddingTop: 10,
-                  paddingBottom: 8,
-                  paddingLeft: 12,
-                  paddingRight: 12,
+                  
+                 
+                  padding: theme.documentPadding,
                   fontFamily: "var(--font-inter)",
                   fontWeight: 400,
                   color: "#212121",
@@ -84,20 +84,17 @@ export const TemplateWrapper = ({
                   overflow: "hidden",
                 }
               : {
-                  minHeight: "100vh",
+                  // minHeight: "100vh",
                   height: "100%",
                   width: "100%",
                   display: "flex",
                   flexDirection: "column",
                   backgroundColor: "#FFFFFF",
-                  padding: 16,
-                  paddingTop: 10,
-                  paddingBottom: 8,
-                  paddingLeft: 12,
-                  paddingRight: 12,
+                
+                  padding: theme.documentPadding,
                   fontFamily: "var(--font-inter)",
                   fontWeight: 400,
-                  color: "#212121",
+                  color: theme.textColor,
                 }
           }
         >

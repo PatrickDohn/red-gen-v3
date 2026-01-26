@@ -80,7 +80,7 @@ export const Skills = ({
                 </DynamicDiv>
               </DynamicDiv>
               <DynamicDiv variant={globalVariant} style={skillStyle.ratingIcon}>
-                {rating_map(skill.rating, globalVariant, ratingIcons)}
+                {rating_map(skill.rating, globalVariant, ratingIcons, skillStyle)}
               </DynamicDiv>
             </DynamicDiv>
           );
@@ -92,7 +92,9 @@ export const Skills = ({
 export const rating_map = (
   num: number,
   variant: string,
-  ratingIcons: IconData[]
+  ratingIcons: IconData[],
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  skillStyle: any
 ) => {
   // Ensure the input number is valid (0 to 7)
   const rating = Math.min(7, Math.max(0, num));
@@ -116,13 +118,7 @@ export const rating_map = (
         variant={variant}
         key={i}
         icon={ratingIconData}
-        style={{
-          fontSize: 6, // Sets the icon size
-          //   marginTop: 1,
-          //   marginRight: 4,
-          width: 6,
-          color: "#004F7A",
-        }}
+        style={skillStyle.skillIcon}
       />
     );
   });

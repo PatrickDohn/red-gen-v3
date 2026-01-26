@@ -11,9 +11,10 @@ export const ColorPicker = () => {
       type: "SET_COLOR",
       payload: {
         primaryColor: hex.primary,    // 2. Use the actual 'hex' passed in
-        secondaryColor: hex.secondaryAccent,
+        secondaryColor: hex.secondary,
         borderColor: hex.accent,
         textColor: hex.text,
+        iconColor: hex.accent
       },
     });
   };
