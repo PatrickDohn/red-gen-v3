@@ -87,7 +87,7 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
         marginBottom: 5, // Spaces the icon from the text
         marginRight: 5,
         width: 15,
-        color: theme.iconColor,
+        color: theme.primaryColor,
         // border: "2px solid blue"
       },
 
@@ -135,7 +135,7 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
         marginRight: 5,
 
         width: 15, // Give it an explicit width for clean alignment
-        color: theme.iconColor,
+        color: theme.primaryColor,
       },
       title: {
         fontSize: 16.1,
@@ -223,7 +223,7 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
         paddingTop: 2.8,
         marginRight: 5,
         width: 15, // Give it an explicit width for clean alignment
-        color: theme.iconColor,
+        color: theme.primaryColor,
       },
       title: {
         fontSize: 16.1,
@@ -286,7 +286,7 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
         fontSize: 6, // Sets the icon size
         // Spaces the icon from the text
         width: 6,
-        color: theme.iconColor,
+        color: theme.primaryColor,
       },
     },
     education: {
@@ -317,8 +317,9 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
         // marginBottom: 4,
         paddingTop: 2.8, // Spaces the icon from the text
         marginRight: 5,
+
         width: 15, // Give it an explicit width for clean alignment
-        color: theme.iconColor,
+        color: theme.primaryColor,
       },
 
       title: {

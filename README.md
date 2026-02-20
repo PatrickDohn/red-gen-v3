@@ -88,3 +88,14 @@ For support, email dohnpatrick1993@gmail.com or leave an issue.
 [ ] create base wrapper for templates
 
 
+
+
+
+
+
+
+Owning projects 
+self starter 
+Talk about the python script
+NetGuardian for project ownership
+IRM dashboard for initiative
