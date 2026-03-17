@@ -28,6 +28,10 @@ export type DutyItem = {
       skill: string;
       rating: number;
     };
+
+    export type SkillLists = Skills & {
+      category: string
+    }
   
     export type ProSkills = {
       skill: string;
@@ -61,6 +65,7 @@ export type DutyItem = {
       contact: ContactInfo;
       experience: ExperienceData[];
       skills: Skills[];
+      skillList: SkillLists[];
       frameworksLibraries: Skills[];
       programmingLanguages: Skills[];
       toolsDatabases: Skills[];

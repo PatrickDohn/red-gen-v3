@@ -1,4 +1,3 @@
-
 import { useSidebar } from "@/app/context/SidebarContext";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import { ExperienceEdit } from "./experience/ExperienceEdit";
@@ -10,16 +9,14 @@ import { SkillStyleEdit } from "./skills/SkillsStyleEdit";
 import { EducationEdit } from "./education/EducationEdit";
 import { SkillListEdit } from "./skills/SkillListEdit";
 
-
 interface ContentMapProps {
   cardType: string;
 }
 
 export function EditCard({ cardType }: ContentMapProps) {
+  const { templateChoice } = useSidebar();
 
-  const { templateChoice } = useSidebar()
-
-  console.log(templateChoice, "In edit")
+  console.log(templateChoice, "In edit");
 
   switch (cardType) {
     case "heading":
@@ -62,7 +59,7 @@ export function EditCard({ cardType }: ContentMapProps) {
             <TabsTrigger value="style">Style</TabsTrigger>
           </TabsList>
           <TabsContent value="content">
-            {templateChoice === "one" ? <SkillsEdit /> : <SkillListEdit /> }
+            {templateChoice === "one" ? <SkillsEdit /> : <SkillListEdit />}
           </TabsContent>
           {/* <TabsContent value="style">
             <SkillStyleEdit />
@@ -70,7 +67,7 @@ export function EditCard({ cardType }: ContentMapProps) {
         </Tabs>
       );
 
-    case "education": 
+    case "education":
       return (
         <Tabs defaultValue="content" className="w-[400px]">
           <TabsList>
@@ -84,6 +81,20 @@ export function EditCard({ cardType }: ContentMapProps) {
             <h3>Style</h3>
           </TabsContent> */}
         </Tabs>
-      )
+      );
+
+    default:
+      return (
+        <Tabs defaultValue="content" className="w-[400px]">
+          <TabsList>
+            <TabsTrigger value="content">Content</TabsTrigger>
+            <TabsTrigger value="style">Style</TabsTrigger>
+          </TabsList>
+          <TabsContent value="content">Hello</TabsContent>
+          {/* <TabsContent value="style">
+          <h3>Style</h3>
+        </TabsContent> */}
+        </Tabs>
+      );
   }
 }

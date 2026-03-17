@@ -15,7 +15,7 @@ import { useResponsiveZoom } from "@/hooks/useResponsiveZoom";
 //     width: `${816}px`, // <-- real Letter width
 //     height: `${1056}px`, // <-- real Letter height
 //     zoom: 1.2, // <-- prevent browser messing with scaling
-    
+
 //   },
 
 //   page: {
@@ -56,8 +56,7 @@ export const TemplateWrapper = ({
   const { templateChoice } = useSidebar();
   const { theme } = useStyleState();
 
-  const zoomLevel = useResponsiveZoom()
-
+  const zoomLevel = useResponsiveZoom();
 
   const docStyle: Record<string, React.CSSProperties> = {
     appContainer: {
@@ -69,72 +68,76 @@ export const TemplateWrapper = ({
       width: `${816}px`, // <-- real Letter width
       height: `${1056}px`, // <-- real Letter height
       zoom: zoomLevel, // <-- prevent browser messing with scaling
-      
+    },
+  };
+
+  const baseStyleMap: Record<string, React.CSSProperties> = {
+    one: {
+      // minHeight: "100vh",
+      height: "100%",
+      width: "100%",
+      display: "flex",
+      flexDirection: "column",
+      backgroundColor: "#FFFFFF",
+
+      padding: theme.documentPadding,
+      fontFamily: "var(--font-inter)",
+      fontWeight: 400,
+      color: "#212121",
+
+      // borders
+      borderTop: `10px solid ${theme.borderColor}`,
+      borderBottom: `10px solid ${theme.borderColor}`,
+      borderTopLeftRadius: "50px",
+      borderBottomRightRadius: "50px",
+
+      overflow: "hidden",
+    },
+    two: {
+      // minHeight: "100vh",
+      height: "100%",
+      width: "100%",
+      display: "flex",
+      flexDirection: "column",
+      backgroundColor: "#FFFFFF",
+
+      padding: theme.documentPadding,
+      fontFamily: "var(--font-inter)",
+      fontWeight: 400,
+      color: theme.textColor,
+    },
+    three: {
+      // minHeight: "100vh",
+      height: "100%",
+      width: "100%",
+      display: "flex",
+      flexDirection: "column",
+      backgroundColor: "#FFFFFF",
+      // borderBottom: `40px solid red`,
+
+      padding: theme.documentPadding,
+      fontFamily: "var(--font-inter)",
+      fontWeight: 400,
+      color: theme.textColor,
     },
   };
 
   // This only runs once the component hits the browser
 
-
   // While the server is rendering or before the browser is ready,
   // we return null (or a skeleton/spinner) to prevent hydration errors.
- 
-  
 
   const activeSection = data.activeSection;
+  const activeStle = baseStyleMap[templateChoice];
   return (
     <div className="flex flex-row justify-around gap-10 ml-10 mr-10 items-start relative">
       {/* 1. FIX: add this style to context */}
       <div style={docStyle.appContainer}>
-        <div
-          style={
-            templateChoice === "one"
-              ? {
-                  // minHeight: "100vh",
-                  height: "100%",
-                  width: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                  backgroundColor: "#FFFFFF",
-
-                  padding: theme.documentPadding,
-                  fontFamily: "var(--font-inter)",
-                  fontWeight: 400,
-                  color: "#212121",
-
-                  // borders
-                  borderTop: `10px solid ${theme.borderColor}`,
-                  borderBottom: `10px solid ${theme.borderColor}`,
-                  borderTopLeftRadius: "50px",
-                  borderBottomRightRadius: "50px",
-
-                  overflow: "hidden",
-                }
-              : {
-                  // minHeight: "100vh",
-                  height: "100%",
-                  width: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                  backgroundColor: "#FFFFFF",
-
-                  padding: theme.documentPadding,
-                  fontFamily: "var(--font-inter)",
-                  fontWeight: 400,
-                  color: theme.textColor,
-                }
-          }
-        >
-          {children}
-        </div>
+        <div style={{ ...activeStle }}>{children}</div>
       </div>
 
       {/* 2. Sticky Sidebar Container */}
-      {activeSection && (
-     
-          <EditCard cardType={activeSection} />
-        
-      )}
+      {activeSection && <EditCard cardType={activeSection} />}
     </div>
   );
 };
