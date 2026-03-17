@@ -1,37 +1,35 @@
 import { ThemeConfig } from "@/app/context/test";
 
-export const getTemplateOneStyles = (theme: ThemeConfig) => {
+export const getTemplateThreeStyles = (theme: ThemeConfig) => {
   return {
     heading: {
       section: {
         display: "flex",
         flexDirection: "row",
         width: "100%",
-        marginBottom: 10,
-        marginTop: 0,
-        // border: "2px solid red",
+       
+
       },
 
       name: {
         display: "flex",
         flexDirection: "column",
-        width: "60%",
+        alignItems: "center",
+        width: "100%",
         // Specific margins
         marginLeft: 10,
         marginRight: 10,
-        marginTop: 0,
+        marginTop: 10,
         marginBottom: 0,
-        // Specific paddings
+   
         paddingLeft: 10,
         paddingRight: 10,
-        paddingTop: 0,
+        paddingTop: 10,
         paddingBottom: 0,
-        // border: "2px solid red"
       },
       title: {
-        fontSize: 36, // -1 or -2 px to visually match PDF size
-        fontFamily: "JetBrains Mono",
-        fontWeight: 800, // PDF "700" ≈ web "800"
+        fontSize: 28, // -1 or -2 px to visually match PDF size
+        fontWeight: 700, // PDF "700" ≈ web "800"
         lineHeight: 1.15, // PDF text is tighter by default
         marginBottom: 6, // slightly larger to match PDF spacing
         textAlign: "start",
@@ -39,8 +37,7 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
       },
 
       subTitle: {
-        fontSize: 12, // visually aligns with PDF medium size
-        fontFamily: "JetBrains Mono",
+        fontSize: 10, // visually aligns with PDF medium size
         fontWeight: 300, // PDF 'light' looks heavier than browser
         lineHeight: 1.15,
         marginBottom: 3,
@@ -50,35 +47,23 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
       },
       contactSection: {
         display: "flex",
-        flexDirection: "column",
-        width: "40%",
-
-        marginLeft: 10,
-        marginRight: 10,
-        marginTop: 0,
-        marginBottom: 0,
-        // Specific paddings
-        paddingLeft: 10,
-        paddingRight: 10,
-        paddingTop: 0,
-        paddingBottom: 0,
-
-        justifyContent: "space-around",
-        // border: "2px solid red"
+        flexDirection: "row",
       },
 
       contactRow: {
         display: "flex",
         flexDirection: "row",
+        justifyContent: "space around",
         alignItems: "center",
         marginBottom: 5,
       },
 
       textContainer: {
         flexDirection: "column",
-        borderBottom: "1px solid",
-        borderColor: theme.borderColor,
+        // borderBottom: "1px solid",
+        // borderColor: theme.borderColor,
         marginLeft: 10,
+        marginRight: 10,
         // border: "2px solid blue",
       },
 
@@ -106,10 +91,9 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
     },
     experience: {
       section: {
-        width: "60%",
-      
+        width: "100%",
 
-        marginLeft: 10,
+        marginLeft:10,
         marginRight: 10,
         marginTop: 0,
         marginBottom: 10,
@@ -118,7 +102,7 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
         paddingRight: 10,
         paddingTop: 0,
         paddingBottom: 0,
-
+    
         // border: "2px solid red",
       },
       heading: {
@@ -129,42 +113,45 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
         marginBottom: 5,
       },
       iconText: {
-        fontSize: 15, // Sets the icon size
-        // marginBottom: 4,
-        paddingTop: 2.8, // Spaces the icon from the text
-        marginRight: 5,
-
-        width: 15, // Give it an explicit width for clean alignment
-        color: theme.primaryColor,
+        marginRight: "5px",
+        minWidth: "3px", // Width of the dot
+        height: "3px", // Height must match width
+        backgroundColor: theme.primaryColor,
+        borderRadius: "50%", // Makes it perfectly round
+        marginTop: "5px", // Centers it vertically with the first line of text
+        flexShrink: 0, // Prevents the dot from squishing if text is long
       },
       title: {
-        fontSize: 16.1,
-        fontFamily: "JetBrains Mono",
-        fontWeight: 800,
+        fontSize: theme.fontSizeTitle,
+      
+        fontWeight: 700,
         lineHeight: 1.5,
-
+        color: theme.primaryColor,
         textAlign: "center",
       },
       experienceContainer: {
         marginBottom: 3,
       },
-
+    
       positionTitleRow: {
         marginBottom: 2,
+        display: "flex"
       },
       positionTitleText: {
-        fontSize: 10,
+        fontSize: theme.fontSizeContent,
         fontWeight: 700,
         color: theme.textColor,
       },
       positionCompanyAccent: {
-        fontSize: 10,
-        fontWeight: 700,
+        fontSize: theme.fontSizeContent,
+        fontWeight: 500,
         color: theme.primaryColor, // Your accent color
       },
-
+    
       text: {
-        fontSize: 10,
+        fontSize: theme.fontSizeContent,
+        fontWeight: 400,
+        color: theme.secondaryColor
         // marginBottom: 2,
       },
       dutyRow: {
@@ -188,7 +175,7 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
     },
     skills: {
       section: {
-        width: "40%",
+        width: "100%",
 
         marginLeft: 10,
         marginRight: 10,
@@ -226,68 +213,42 @@ export const getTemplateOneStyles = (theme: ThemeConfig) => {
         color: theme.primaryColor,
       },
       title: {
-        fontSize: 16.1,
-        fontFamily: "JetBrains Mono",
-        fontWeight: 800,
+        fontSize: theme.fontSizeTitle,
+      
+        fontWeight: 700,
         lineHeight: 1.5,
+        color: theme.primaryColor,
         textAlign: "center",
       },
-      ratingHeader: {
-        display: "flex",
-        flexDirection: "row",
-        fontSize: 6,
-        marginTop: 3,
-        justifyContent: "flex-end",
-      },
-      blankSpace: {
-        width: "50%",
-      },
-      ratingScale: {
-        display: "flex",
-        width: "50%",
-        fontSize: 9,
-        flexDirection: "row",
-        justifyContent: "space-between",
-      },
-      skillItem: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
 
-        // margin: 3,
-        // padding: 3,
-        // alignContent: "center",
+      contentContainer: {
+        
+        // border: "2px solid red"
       },
 
-      skillRating: {
+      skillItems: {
         display: "flex",
-        flexDirection: "row",
-        fontSize: 8,
+       
+
+      
       },
 
-      skillText: {
-        fontSize: 10,
+      skillCategory: {
+        display: "flex",
+        fontSize: theme.fontSizeContent,
+        fontWeight: 700,
         color: theme.textColor,
-        width: "50%",
-        marginTop: 5,
-        paddingLeft: 0,
+        
       },
+      skillList: {
+   
+        marginLeft: 5,
+        fontSize: theme.fontSizeContent,
+        fontWeight: 400,
+        color: theme.textColor
+    
+      }
 
-      ratingIcon: {
-        display: "flex",
-        alignContent: "center",
-        alignItems: "center",
-        flexDirection: "row",
-        marginTop: 5,
-        width: "50%",
-        justifyContent: "space-between",
-      },
-      skillIcon: {
-        fontSize: 6, // Sets the icon size
-        // Spaces the icon from the text
-        width: 6,
-        color: theme.primaryColor,
-      },
     },
     education: {
       section: {

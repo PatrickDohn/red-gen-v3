@@ -17,7 +17,7 @@ interface HeadingProps {
   webEdit?: React.Dispatch<ResumeAction> | null;
 }
 
-export const HeadingTwo = ({
+export const HeadingThree = ({
   globalVariant,
   data,
   headingStyle,
@@ -70,18 +70,12 @@ export const HeadingTwo = ({
                   variant={globalVariant}
                   style={headingStyle.textContainer}
                 >
-                  <Typography
-                    variant={globalVariant}
-                    style={headingStyle.contactText}
-                  >
-                    {toTitleCase(tag)}
-                  </Typography>
                   <DynamicLink
                     variant={globalVariant}
                     linkValue={item.value}
                     style={headingStyle.link}
                   >
-                    {item.value}
+                    {tag === "email" ? item.value : toTitleCase(tag)}
                   </DynamicLink>
                 </DynamicDiv>
               </DynamicDiv>

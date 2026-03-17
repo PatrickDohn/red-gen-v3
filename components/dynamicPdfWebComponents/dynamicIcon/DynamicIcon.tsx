@@ -1,4 +1,3 @@
-
 import type { Style } from "@react-pdf/types";
 import { IconData } from "@/app/data/iconMap";
 import { IconPdf } from "./Icon.pdf";
@@ -19,7 +18,5 @@ export function DynamicIcon({
     return <IconPdf style={style as Record<string, Style>} icon={icon} />;
   }
 
-  if (variant === "web") {
-    return <IconWeb style={style} icon={icon.iconObject} />;
-  }
+  return <IconWeb style={style} icon={icon.iconObject} />;
 }

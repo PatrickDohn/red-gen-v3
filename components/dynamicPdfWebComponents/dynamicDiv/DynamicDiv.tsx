@@ -14,7 +14,5 @@ export function DynamicDiv(props: DynamicDivProps) {
     return <DivPdf style={style as Record<string, Style>}>{children}</DivPdf>;
   }
 
-  if (variant == "web") {
-    return <DivWeb  {...(props as DynamicDivWebProps)} />;
-  }
+  return <DivWeb {...(props as DynamicDivWebProps)} />;
 }

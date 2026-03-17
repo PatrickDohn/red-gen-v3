@@ -1,5 +1,6 @@
 
 
+
 export const WebFooter = () => {
   return (
     <footer className="w-full border-t border-gray-200 bg-white py-8 mt-20">
@@ -22,6 +23,7 @@ export const WebFooter = () => {
         <div className="text-sm text-gray-400">
           © {new Date().getFullYear()} All rights reserved.
         </div>
+     
       </div>
     </footer>
   );

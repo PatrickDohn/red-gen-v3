@@ -245,6 +245,7 @@ function resDataReducer(
 
       return {
         ...resData,
+        // @ts-ignore
         [section]: currentSection.filter((_, i) => i !== index),
       };
     }
@@ -386,7 +387,23 @@ const initialData: ResumeDocProps = {
     { skill: "Unit Testing", rating: 5 },
     { skill: "Node.js", rating: 6 },
     { skill: "Pandas", rating: 4 },
-    
+  ],
+  skillList: [
+    { skill: "JavaScript", rating: 6, category: "programming languages" },
+    { skill: "TypeScript", rating: 6, category: "programming languages" },
+    { skill: "Python", rating: 4, category: "programming languages" },
+    { skill: "NextJs", rating: 4, category: "frameworks & libraries" },
+    { skill: "React", rating: 5, category: "frameworks & libraries" },
+    { skill: "Node.js", rating: 5, category: "frameworks & libraries" },
+    { skill: "Sqlite", rating: 4, category: "datebases" },
+    { skill: "MariaDB", rating: 4, category: "datebases" },
+    { skill: "MongoDB", rating: 4, category: "datebases" },
+    { skill: "Git", rating: 4, category: "tools & platforms" },
+    { skill: "GitHub", rating: 4, category: "tools & platforms" },
+    { skill: "Apigee", rating: 4, category: "tools & platforms" },
+    { skill: "API Architecture", rating: 4, category: "tools & platforms" },
+
+    // Tools & Platforms: Git, GitLab, Apigee, API Architecture, Automation
   ],
   professionalSkills: [
     { skill: "Software Development", rating: 6 },
@@ -415,7 +432,6 @@ const initialData: ResumeDocProps = {
       duration: "2020",
       about:
         "Completed an intensive 600+ hour curriculum focused on modern web development technologies and best practices.",
-        
     },
   ],
   activeSection: null,

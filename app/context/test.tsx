@@ -7,6 +7,7 @@ import {
   useMemo,
   type ReactNode,
   useState,
+  useEffect,
 } from "react";
 import { templateRegistry } from "@/app/styles/registry";
 import {
@@ -15,6 +16,7 @@ import {
   SectionVisibilityState,
   sectionVisibilityState,
 } from "../types/styles";
+import { getStorage } from "@/hooks/getStorage";
 
 // 1. Define the "DNA" of the resume
 export interface ThemeConfig {
@@ -136,6 +138,16 @@ const StyleDispatchContext = createContext<React.Dispatch<StyleAction> | null>(
 
 export function StyleProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(styleReducer, initialState);
+
+  // const [state, dispatch] = useReducer(styleReducer, null, () => 
+  //   getStorage("resume_style_v1", initialState)
+  // );
+
+  
+  // 2. Save on every change
+  // useEffect(() => {
+  //   localStorage.setItem("resume_style_v1", JSON.stringify(state));
+  // }, [state]);
 
   const computedStyles = useMemo(() => {
     const factory =

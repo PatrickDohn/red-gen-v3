@@ -1,12 +1,14 @@
 
 
 import { getTemplateOneStyles } from "./templates/templateOne";
+import { getTemplateThreeStyles } from "./templates/templateThree";
 import { getTemplateTwoStyles } from "./templates/templateTwo";
 
 
 
 export const templateRegistry = {
   templateTwo: getTemplateTwoStyles,
-  templateOne: getTemplateOneStyles
+  templateOne: getTemplateOneStyles,
+  templateThree: getTemplateThreeStyles
  
 };

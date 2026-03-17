@@ -1,40 +1,42 @@
 "use client";
 // context/SidebarContext.tsx
 import React, { createContext, useState, useContext, useMemo } from "react";
-import { SidebarData, SidebarContextType, SidebarItem, TemplateChoice } from "../types/sidebar";
+import {
+  SidebarData,
+  SidebarContextType,
+  SidebarItem,
+  TemplateChoice,
+} from "../types/sidebar";
 import { ClipboardCheck, Map } from "lucide-react";
 
 const SidebarContext = createContext<SidebarContextType | undefined>(undefined);
 
 const templateMenuItems: Record<TemplateChoice, SidebarItem[]> = {
-  "one": [
+  one: [
     { title: "Heading", url: "?heading" },
     { title: "Experience", url: "/edit#experience", isActive: true },
     { title: "Education", url: "/edit#education" },
     { title: "Skills", url: "/edit#skills" },
     { title: "Design & Font", url: "/edit#design" },
-    { title: "Preview", url: "/edit#view" }
+    { title: "Preview", url: "/edit#view" },
   ],
-  "two": [
+  two: [
     { title: "Heading", url: "?heading" },
     { title: "Experience", url: "/edit#experience", isActive: true },
     { title: "Skills", url: "/edit#skills" },
     { title: "Education", url: "/edit#education" },
     { title: "Design & Font", url: "/edit#design" },
-    { title: "Preview", url: "/edit#view" }
+    { title: "Preview", url: "/edit#view" },
   ],
-  "three": [
-    { title: "Professional Skills", url: "#" },
-  ],
+  three: [{ title: "Professional Skills", url: "#" }],
 };
-
 
 // Provider Component
 export function SidebarProvider({ children }: { children: React.ReactNode }) {
   const [activeItemKey, setActiveItemKey] = useState<string | null>(null);
   const [sectionHighlight, setSectionHighlight] = useState<boolean>(false);
 
-  const [templateChoice, setTemplateChoice] = useState<TemplateChoice>("two");
+  const [templateChoice, setTemplateChoice] = useState<TemplateChoice>("three");
 
   const dynamicSidebarData: SidebarData = useMemo(() => {
     return {
