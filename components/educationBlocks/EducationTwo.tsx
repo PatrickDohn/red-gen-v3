@@ -60,10 +60,10 @@ export const EducationTwo = ({
             >
               {item.school}
             </Typography>
+            <Typography variant={globalVariant} style={educationStyles.text}>
+              {item.duration}
+            </Typography>
           </DynamicDiv>
-          <Typography variant={globalVariant} style={educationStyles.text}>
-            {item.duration}
-          </Typography>
           <DynamicDiv variant={globalVariant} style={educationStyles.aboutRow}>
             <DynamicDiv
               variant={globalVariant}

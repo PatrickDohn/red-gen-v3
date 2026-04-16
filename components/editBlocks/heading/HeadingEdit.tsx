@@ -20,6 +20,7 @@ import { useForm, SubmitHandler, Controller } from "react-hook-form";
 type Inputs = {
   name: string;
   title: { value: string; visible: boolean };
+  currentCompany: string | null;
   contact: ContactInfo;
 };
 
@@ -36,6 +37,7 @@ export const HeadingEdit = () => {
     defaultValues: {
       contact: data.contact,
       title: data.title,
+      currentCompany: data.experience ? data.experience[0].company : null,
     },
   });
   const onSubmit: SubmitHandler<Inputs> = (data) => {
@@ -45,7 +47,7 @@ export const HeadingEdit = () => {
       payload: data,
     });
   };
-  console.log(data.title.value, "HERE");
+  console.log(data, "HERE");
   return (
     <div className="h-100 border-green-200 rounded-lg">
       <Card className="w-100 max-w-xl">
@@ -95,6 +97,34 @@ export const HeadingEdit = () => {
                   {...register("title.value")}
                   placeholder="Most recent title held"
                   defaultValue={data.title.value}
+                />
+              </div>
+              <div className="grid gap-2">
+                <div className="flex flex-row justify-between">
+                  <Label htmlFor="email">Current Company:</Label>
+                  <div className="flex items-center space-x-2">
+                    <Label htmlFor="airplane-mode">Visible</Label>
+                    <Controller
+                      control={control}
+                      name={`currentCompany.visible`}
+                      render={({ field: { onChange, value } }) => (
+                        <Switch
+                          id={"titleVisibility"}
+                          // Use 'checked' (controlled) instead of 'defaultChecked'
+                          checked={value}
+                          // Manually pipe the custom event into the RHF onChange
+                          onCheckedChange={onChange}
+                        />
+                      )}
+                    />
+                  </div>
+                </div>
+                <Input
+                  id="currentCompany"
+                  type="text"
+                  {...register("currentCompany")}
+                  placeholder="Most recent title held"
+                  defaultValue={data.experience[0].company}
                 />
               </div>
               {(

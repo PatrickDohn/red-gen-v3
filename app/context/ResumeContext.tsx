@@ -268,7 +268,7 @@ function resDataReducer(
 
 const initialData: ResumeDocProps = {
   name: "PATRICK DOHN",
-  title: { value: "SOFTWARE ENGINEER @ VERIZON", visible: true },
+  title: { value: "SOFTWARE ENGINEER", visible: true },
   contact: {
     email: { value: "dohnpatrick1993@gmail.com", visible: true },
     linkedIn: { value: "linkedin.com/in/patrick-dohn/", visible: true },

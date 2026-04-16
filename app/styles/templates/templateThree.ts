@@ -273,21 +273,15 @@ export const getTemplateThreeStyles = (theme: ThemeConfig) => {
         borderColor: theme.borderColor,
         marginBottom: 5,
       },
-      iconText: {
-        fontSize: 15, // Sets the icon size
-        // marginBottom: 4,
-        paddingTop: 2.8, // Spaces the icon from the text
-        marginRight: 5,
 
-        width: 15, // Give it an explicit width for clean alignment
-        color: theme.primaryColor,
-      },
 
       title: {
-        fontSize: 16.1,
-        fontFamily: "JetBrains Mono",
-        fontWeight: 800,
+        fontSize: theme.fontSizeTitle,
+      
+        fontWeight: 700,
         lineHeight: 1.5,
+        color: theme.primaryColor,
+        textAlign: "center",
       },
 
       educationContainer: {
@@ -296,16 +290,20 @@ export const getTemplateThreeStyles = (theme: ThemeConfig) => {
 
       titleRow: {
         marginBottom: 2,
+        display: "flex"
       },
 
       schoolTitleText: {
         fontSize: 10,
         fontWeight: 700,
         color: theme.textColor,
+        display: "inline"
       },
 
       text: {
         fontSize: 10,
+        display: "inline",
+        marginLeft: 4
         // marginBottom: 2,
       },
 

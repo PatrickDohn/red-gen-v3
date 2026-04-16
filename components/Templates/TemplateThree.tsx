@@ -12,6 +12,7 @@ import { HeadingThree } from "../headingBlocks/HeadingThree";
 import { ExperienceThree } from "../experienceBlocks/ExperienceThree";
 import { SkillSectionTwo } from "../skillBlocks/SkillsSectionTwo";
 import { SkillSectionThree } from "../skillBlocks/SkillsSectionThree";
+import { EducationTwo } from "../educationBlocks/EducationTwo";
 
 export const ResTemplateThree = () => {
   const data = useResumeData();
@@ -49,14 +50,14 @@ export const ResTemplateThree = () => {
           icons={iconState["skills"]}
         />
       </div>
-      {/* <div style={{ display: "flex", flexDirection: "row" }}>
+      <div style={{ display: "flex", flexDirection: "row" }}>
         <EducationTwo
           globalVariant="web"
           data={data}
           educationStyles={education}
           icons={iconState["education"]}
         />
-      </div> */}
+      </div>
     </TemplateWrapper>
   );
 };
