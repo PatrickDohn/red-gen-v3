@@ -8,6 +8,9 @@ import { DynamicDiv } from "../dynamicPdfWebComponents/dynamicDiv/DynamicDiv";
 import { ResumeDocProps } from "@/app/types/resume-data";
 import { DynamicIcon } from "../dynamicPdfWebComponents/dynamicIcon/DynamicIcon";
 import { DynamicLink } from "../dynamicPdfWebComponents/dynamicLink/DynamicLink";
+import { useState } from "react";
+import { Input } from "../ui/input";
+import { EditInput } from "../custom/EditInput";
 
 interface HeadingProps {
   globalVariant: string;
@@ -23,6 +26,8 @@ export const HeadingThree = ({
   headingStyle,
   webEdit,
 }: HeadingProps) => {
+  const [editing, setEditing] = useState(false);
+  const [text, setText] = useState(data.name);
   const activeSection = data.activeSection;
   return (
     <DynamicDiv
@@ -48,14 +53,33 @@ export const HeadingThree = ({
     >
       <DynamicDiv variant={globalVariant} style={headingStyle.name}>
         {/* <h1 style={headingStyle.headerTitle}>{data.name}</h1> */}
-        <Typography variant={globalVariant} style={headingStyle.title}>
+        {/* <Typography variant={globalVariant} style={headingStyle.title}>
           {data.name}
-        </Typography>
+        </Typography> */}
+        {editing ? (
+          <EditInput
+            autoFocus
+            value={text}
+            style={headingStyle.title}
+            onChange={(e) => setText(e.target.value)}
+            onBlur={() => setEditing(false)}
+            onKeyDown={(e) => e.key === "Enter" && setEditing(false)}
+          />
+        ) : (
+          <h1
+            className="mb-0 hover:bg-gray-400 cursor-pointer transition duration-150 rounded-md"
+            style={headingStyle.title}
+            onClick={() => setEditing(true)}
+          >
+            {text}
+          </h1>
+        )}
         {!data.title.visible ? null : (
           <Typography variant={globalVariant} style={headingStyle.subTitle}>
             {data.title.value}
           </Typography>
         )}
+
         <DynamicDiv variant={globalVariant} style={headingStyle.contactSection}>
           {Object.entries(data.contact).map(([tag, item]) => {
             if (!item.visible) return null;

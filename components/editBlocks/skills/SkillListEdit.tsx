@@ -26,6 +26,9 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Trash2 } from "lucide-react";
 import { useStyleDispatch, useStyles } from "@/app/context/test";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import React from "react";
+import { Separator } from "@/components/ui/separator";
 
 type Inputs = {
   skills: Skills[];
@@ -70,54 +73,56 @@ export const SkillListEdit = () => {
                   <AccordionItem value={"proskill"}>
                     <AccordionTrigger>Skills</AccordionTrigger>
                     <AccordionContent className="flex flex-col gap-4 text-balance">
-                      {fields.map((item, idx) => {
-                        return (
-                          <div key={item.id} className="flex gap-2 w-full">
-                            <Controller
-                              control={control}
-                              name={`skills.${idx}.skill` as Path<Inputs>}
-                              render={({ field: { onChange, value } }) => (
-                                <Input
-                                  id={`skills-${idx}`}
-                                  value={(value as string) || ""}
-                                  onChange={(e) => {
-                                    const newValue = e.target.value;
-                                    onChange(newValue);
-                                    dispatch?.({
-                                      type: "EDIT_SKILLS",
-                                      payload: {
-                                        section: "skills",
-                                        index: idx,
-                                        field: "skill",
-                                        value: newValue,
-                                      },
-                                    });
-                                  }}
-                                />
-                              )}
-                            />
-                            <Button
-                              size="icon-sm"
-                              type="button"
-                              variant="destructive"
-                              onClick={() => {
-                                remove(idx); // This safely removes the item from Hook Form state
-                                dispatch?.({
-                                  type: "DELETE_SKILL",
-                                  payload: {
-                                    section: "skills",
-                                    index: idx,
-                                    field: "skill",
-                                    value: item,
-                                  },
-                                });
-                              }}
-                            >
-                              <Trash2 />
-                            </Button>
-                          </div>
-                        );
-                      })}
+                      <ScrollArea className="h-72 max-w-full ">
+                        {fields.map((item, idx) => {
+                          return (
+                            <div key={item.id} className="flex gap-2 w-full">
+                              <Controller
+                                control={control}
+                                name={`skills.${idx}.skill` as Path<Inputs>}
+                                render={({ field: { onChange, value } }) => (
+                                  <Input
+                                    id={`skills-${idx}`}
+                                    value={(value as string) || ""}
+                                    onChange={(e) => {
+                                      const newValue = e.target.value;
+                                      onChange(newValue);
+                                      dispatch?.({
+                                        type: "EDIT_SKILLS",
+                                        payload: {
+                                          section: "skills",
+                                          index: idx,
+                                          field: "skill",
+                                          value: newValue,
+                                        },
+                                      });
+                                    }}
+                                  />
+                                )}
+                              />
+                              <Button
+                                size="icon-sm"
+                                type="button"
+                                variant="destructive"
+                                onClick={() => {
+                                  remove(idx); // This safely removes the item from Hook Form state
+                                  dispatch?.({
+                                    type: "DELETE_SKILL",
+                                    payload: {
+                                      section: "skills",
+                                      index: idx,
+                                      field: "skill",
+                                      value: item,
+                                    },
+                                  });
+                                }}
+                              >
+                                <Trash2 />
+                              </Button>
+                            </div>
+                          );
+                        })}
+                      </ScrollArea>
                       <Button
                         type="button"
                         onClick={() => {
